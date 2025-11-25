@@ -105,7 +105,26 @@
     @media(max-width:800px){
       .hero{grid-template-columns:1fr;}
     }
-  </style>
+  </style><style>
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* images ke beech gap */
+}
+
+.gallery img {
+  width: 200px; /* size adjust karo */
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05); /* hover effect */
+}
+</style>
+  
 </head>
 
 <body>
