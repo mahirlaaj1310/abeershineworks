@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abeer Shine Works — Home</title>
+  <style>
+    :root{
+      --accent:#00b8b8;
+      --dark:#0b0b0b;
+      --muted:#6b6b6b;
+      --white:#ffffff;
+      --glass: rgba(255,255,255,0.06);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: #f5f6f8;
+      color:var(--dark);
+    }
+
+    /* Header / Nav */
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:18px 24px;position:sticky;top:0;
+      background: rgba(255,255,255,0.88);backdrop-filter: blur(6px);
+      box-shadow: 0 4px 18px rgba(12,12,12,0.06);
+      z-index:40;
+    }
+    .brand{display:flex;gap:12px;align-items:center;color:var(--dark);text-decoration:none}
+    .brand .logo{
+      width:48px;height:48px;border-radius:10px;background: var(--accent);
+      display:flex;align-items:center;justify-content:center;color:var(--white);
+      font-weight:700;font-size:18px;box-shadow: 0 6px 20px rgba(0,184,184,0.14);
+    }
+    .brand h1{font-size:18px;margin:0}
+    .nav-actions{display:flex;gap:12px}
+
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns: 1fr 1fr;gap:28px;
+      align-items:center;padding:36px;max-width:1200px;margin:26px auto;
+    }
+
+    /* Image stack */
+    .visual{
+      position:relative;min-height:380px;border-radius:18px;overflow:hidden;
+      box-shadow: 0 12px 40px rgba(15,15,15,0.08);
+      background: linear-gradient(180deg, #e9f8f8, #ffffff);
+    }
+    .img-left, .img-right{
+      position:absolute;top:8%;width:66%;height:84%;
+      border-radius:14px;overflow:hidden;background:#ddd;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+      cursor:pointer;
+    }
+    .img-left img, .img-right img{
+      width:100%;height:100%;object-fit:cover;display:block;
+    }
+    .img-left{ left:6%; transform:rotate(-3deg); z-index:2; }
+    .img-right{ right:6%; transform:rotate(2deg); z-index:1; opacity:0.98; }
+
+    /* Overlay badge */
+    .badge{
+      position:absolute;left:12px;top:12px;background: rgba(0,0,0,0.55);
+      color:#fff;padding:8px 12px;border-radius:999px;font-weight:700;
+      font-size:13px;z-index:6;
+    }
+
+    /* Text column */
+    .copy{padding:8px 6px;}
+    .eyebrow{color:var(--accent);font-weight:700;font-size:13px;margin-bottom:10px;}
+    h2{margin:0 0 12px;font-size:34px;line-height:1.05;}
+    p.lead{color:var(--muted);font-size:15px;margin:0 0 20px}
+
+    /* CTA big buttons */
+    .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+    .btn{
+      display:inline-flex;align-items:center;gap:12px;padding:18px 26px;
+      border-radius:14px;border:none;font-weight:800;font-size:17px;
+      cursor:pointer;text-decoration:none;box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    }
+    .btn-book{background: linear-gradient(90deg,var(--accent), #00d6d6);color:var(--white);}
+    .btn-wp{background:transparent;color:var(--dark);border:2px solid rgba(0,0,0,0.08);padding:16px 20px;}
+
+    /* SERVICES */
+    .services{
+      margin:18px auto 60px;max-width:1200px;
+      display:grid;grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap:18px;padding:0 22px;
+    }
+    .card{
+      background:#fff;border-radius:12px;padding:22px;
+      box-shadow:0 8px 20px rgba(12,12,12,0.04);
+    }
+
+    /* Lightbox Popup */
+    .lightbox{
+      position:fixed;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.9);
+      display:none;justify-content:center;align-items:center;
+      z-index:9999;
+    }
+    .lightbox img{
+      max-width:90%;max-height:90%;border-radius:12px;
+    }
+    .close-btn{
+      position:absolute;top:20px;right:28px;color:#fff;
+      font-size:40px;font-weight:700;cursor:pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <a class="brand" href="#">
+      <div class="logo">AS</div>
+      <div>
+        <h1>Abeer Shine Works</h1>
+        <div style="font-size:12px;color:var(--muted)">Car Washing & Detailing — Indore</div>
+      </div>
+    </a>
+
+    <div class="nav-actions">
+      <a class="small-btn" href="#services">Services</a>
+      <a class="small-btn" href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <div class="visual">
+        <div class="badge">Home Service</div>
+
+        <!-- CLICKABLE IMAGES -->
+        <div class="img-left" onclick="openLightbox('homepic1.jpeg')">
+          <img src="homepic1.jpeg" alt="">
+        </div>
+
+        <div class="img-right" onclick="openLightbox('homepic2.jpeg')">
+          <img src="homepic2.jpeg" alt="">
+        </div>
+      </div>
+
+      <div class="copy">
+        <div class="eyebrow">Professional • Reliable • Local</div>
+        <h2>Complete Car Washing & Detailing — Exterior + Interior</h2>
+        <p class="lead">We bring premium car detailing to your society driveway.</p>
+
+        <div class="cta-row">
+          <a class="btn btn-book" href="#booking"><span>🚗</span> Book Now</a>
+
+          <a class="btn btn-wp" href="https://wa.me/917906199445" target="_blank">
+            💬 WhatsApp: +91 7906199445
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services">
+      <div class="card">
+        <div style="font-weight:700;font-size:18px;">Our Services</div>
+        <ul style="padding-left:18px;color:var(--muted);line-height:1.55;">
+          <li>Exterior Foam Wash</li>
+          <li>Interior Vacuum Cleaning</li>
+          <li>Dashboard & Console Wipe</li>
+          <li>Tyre & Wheel Cleaning</li>
+          <li>Glass & Mirror Cleaning</li>
+          <li>Microfiber Dry & Shine</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div style="font-weight:700;font-size:18px;">Why Choose Us?</div>
+        <ul style="padding-left:18px;color:var(--muted);line-height:1.55;">
+          <li>Home Service — Society Driveway</li>
+          <li>Trained & Professional Team</li>
+          <li>Premium Car Care Products</li>
+          <li>Fast & Reliable Work</li>
+          <li>Eco-friendly Cleaning</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <span class="close-btn" onclick="closeLightbox()">×</span>
+    <img id="lightbox-img" src="" />
+  </div>
+
+  <script>
+    function openLightbox(src){
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox").style.display = "flex";
+    }
+    function closeLightbox(){
+      document.getElementById("lightbox").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
