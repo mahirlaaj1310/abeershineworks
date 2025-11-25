@@ -6,35 +6,33 @@
   <title>Abeer Shine Works — Car Washing & Detailing (Indore, MP)</title>
 
   <style>
-    :root{
+    :root {
       --accent:#00b8b8;
-      --dark:#ffffff;  /* default text white */
-      --muted:#ffffff;  /* muted text white */
-      --bg:#000000;     /* background black */
-      --card:#111111;   /* dark card */
+      --dark:#ffffff;
+      --muted:#ffffff;
+      --bg:#000000;
+      --card:#111111;
     }
 
     *{box-sizing:border-box;margin:0;padding:0;}
 
-    /* Body background and default text color */
     body{
-      font-family:Inter, Arial;
-      background-color: black !important;
-      color: white !important;
+      font-family:Inter, Arial, sans-serif;
+      background-color: var(--bg);
+      color: white;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Text outline / white border */
-    h1, h2, h3, p, a, span {
-      color: white !important;
-      text-shadow: 
-         -1px -1px 0 #ffffff,
-          1px -1px 0 #ffffff,
-         -1px  1px 0 #ffffff,
-          1px  1px 0 #ffffff;
+    h1,h2,h3,p,a,span{
+      color: white;
+      -webkit-text-stroke: 0.8px white; /* sharp outline */
+      text-fill-color: white;
+      font-weight: 600;
     }
 
     header{
-      background:#111111; /* dark header to match black background */
+      background: var(--card);
       padding:16px 18px;
       position:sticky;
       top:0;
@@ -51,11 +49,11 @@
     nav a{
       margin-left:18px;
       font-weight:600;
-      color:white !important;
+      color:white;
       text-decoration:none;
     }
 
-    .brand {display:flex;align-items:center;gap:12px;}
+    .brand{display:flex;align-items:center;gap:12px;}
     .logo{
       width:52px;height:52px;
       background:linear-gradient(135deg,#00b8b8,#4f46e5);
@@ -96,7 +94,7 @@
     }
 
     .card{
-      background:#111111;
+      background:var(--card);
       padding:16px;
       border-radius:14px;
       box-shadow:0 6px 14px rgba(255,255,255,0.05);
@@ -108,6 +106,7 @@
       width:100%;
       border-radius:14px;
       margin-top:16px;
+      image-rendering:auto;
     }
 
     footer{
@@ -126,20 +125,21 @@
     .gallery {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px; /* images ke beech gap */
+      gap: 10px;
     }
 
     .gallery img {
-      width: 200px; /* size adjust karo */
+      width: 200px;
       height: 150px;
       object-fit: cover;
       border-radius: 5px;
-      border: 2px solid white; /* white border around images */
+      border: 2px solid white;
       transition: transform 0.3s;
+      image-rendering:auto;
     }
 
     .gallery img:hover {
-      transform: scale(1.05); /* hover effect */
+      transform: scale(1.05);
     }
 
   </style>
@@ -182,13 +182,13 @@
       <div class="cards">
         <div class="card">
           <div>Exterior Wash</div>
-          <img src="images/The_same_white_202511251250.jpeg" alt="Photo 6">
+          <img src="images/The_same_white_202511251250.jpeg" alt="Exterior Wash">
           <div class="price">₹500</div>
         </div>
 
         <div class="card">
           <div>Interior Cleaning</div>
-          <img src="images/Interior_of_a_202511251251.jpeg" alt="Photo 5">
+          <img src="images/Interior_of_a_202511251251.jpeg" alt="Interior Cleaning">
           <div class="price">₹1200</div>
         </div>
 
@@ -203,8 +203,9 @@
       <img src="images/Create_a_wide_202511242106.jpeg" alt="Car wash image" />
     </div>
 
-  </section><!-- Gallery Section -->
+  </section>
 
+  <!-- Gallery Section -->
   <h2>Photo Gallery</h2>
   <div class="gallery">
     <img src="images/A_white_maruti_202511251250.jpeg" alt="Photo 1">
