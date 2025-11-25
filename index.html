@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -6,26 +6,39 @@
   <title>Abeer Shine Works — Car Washing & Detailing (Indore, MP)</title>
 
   <style>
-
     :root{
       --accent:#00b8b8;
-      --dark:#fffffff;
-      --muted:#ffffff;
-      --bg:#000000;
-      --card:#111111;
+      --dark:#ffffff;  /* default text white */
+      --muted:#ffffff;  /* muted text white */
+      --bg:#000000;     /* background black */
+      --card:#111111;   /* dark card */
     }
 
     *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:Inter,Arial;background-color: black !important;
-color: white !important;
-}
+
+    /* Body background and default text color */
+    body{
+      font-family:Inter, Arial;
+      background-color: black !important;
+      color: white !important;
+    }
+
+    /* Text outline / white border */
+    h1, h2, h3, p, a, span {
+      color: white !important;
+      text-shadow: 
+         -1px -1px 0 #ffffff,
+          1px -1px 0 #ffffff,
+         -1px  1px 0 #ffffff,
+          1px  1px 0 #ffffff;
+    }
 
     header{
-      background:#fff;
+      background:#111111; /* dark header to match black background */
       padding:16px 18px;
       position:sticky;
       top:0;
-      box-shadow:0 2px 10px rgba(0,0,0,0.08);
+      box-shadow:0 2px 10px rgba(0,0,0,0.3);
       z-index:50;
     }
 
@@ -38,7 +51,7 @@ color: white !important;
     nav a{
       margin-left:18px;
       font-weight:600;
-      color:var(--dark);
+      color:white !important;
       text-decoration:none;
     }
 
@@ -61,7 +74,7 @@ color: white !important;
     }
 
     h1{font-size:40px;margin-bottom:10px;}
-    .lead{font-size:16px;color:var(--muted);}
+    .lead{font-size:16px;color:white;}
 
     .btn{
       padding:12px 18px;
@@ -83,10 +96,10 @@ color: white !important;
     }
 
     .card{
-      background:var(--card);
+      background:#111111;
       padding:16px;
       border-radius:14px;
-      box-shadow:0 6px 14px rgba(0,0,0,0.08);
+      box-shadow:0 6px 14px rgba(255,255,255,0.05);
     }
 
     .price{font-size:20px;font-weight:900;margin-top:4px;}
@@ -102,32 +115,34 @@ color: white !important;
       padding:20px;
       text-align:center;
       font-size:14px;
-      color:var(--muted);
+      color:white;
     }
 
     @media(max-width:800px){
       .hero{grid-template-columns:1fr;}
     }
-  </style><style>
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px; /* images ke beech gap */
-}
 
-.gallery img {
-  width: 200px; /* size adjust karo */
-  height: 150px;
-  object-fit: cover;
-  border-radius: 5px;
-  transition: transform 0.3s;
-}
+    /* Gallery styling */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px; /* images ke beech gap */
+    }
 
-.gallery img:hover {
-  transform: scale(1.05); /* hover effect */
-}
-</style>
-  
+    .gallery img {
+      width: 200px; /* size adjust karo */
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      border: 2px solid white; /* white border around images */
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05); /* hover effect */
+    }
+
+  </style>
 </head>
 
 <body>
@@ -138,7 +153,7 @@ color: white !important;
       <div class="logo">AS</div>
       <div>
         <div style="font-weight:800;font-size:18px;">Abeer Shine Works</div>
-        <div style="color:var(--muted);font-size:13px">Indore, MP</div>
+        <div style="color:white;font-size:13px">Indore, MP</div>
       </div>
     </div>
 
@@ -187,17 +202,16 @@ color: white !important;
     <div>
       <img src="images/Create_a_wide_202511242106.jpeg" alt="Car wash image" />
     </div>
-    
+
   </section><!-- Gallery Section -->
-<h2>Photo Gallery</h2>
-<div class="gallery">
-  <img src="images/A_white_maruti_202511251250.jpeg" alt="Photo 1">
-  <img src="images/The_same_white_202511251250.jpeg" alt="Photo 2">
-  <img src="images/Interior_of_a_202511251251.jpeg" alt="Photo 3">
-  <img src="images/Interior_of_the_202511251251.jpeg" alt="Photo 4">
-  
-  <!-- aur images add karte jao -->
-</div>
+
+  <h2>Photo Gallery</h2>
+  <div class="gallery">
+    <img src="images/A_white_maruti_202511251250.jpeg" alt="Photo 1">
+    <img src="images/The_same_white_202511251250.jpeg" alt="Photo 2">
+    <img src="images/Interior_of_a_202511251251.jpeg" alt="Photo 3">
+    <img src="images/Interior_of_the_202511251251.jpeg" alt="Photo 4">
+  </div>
 
   <!-- About -->
   <section id="about" style="margin-top:40px;">
