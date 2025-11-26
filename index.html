@@ -22,7 +22,6 @@
     animation: bgFloat 20s ease-in-out infinite alternate;
   }
 
-  /* Background subtle float animation */
   @keyframes bgFloat {
     0% { background-position: 50% 48%; }
     50% { background-position: 50% 52%; }
@@ -144,7 +143,6 @@
     .hero{grid-template-columns:1fr;}
   }
 
-  /* Gallery */
   .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -168,7 +166,6 @@
     transform: scale(1.05);
   }
 
-  /* Lightbox */
   .lightbox{
     position:fixed;top:0;left:0;width:100%;height:100%;
     background:rgba(0,0,0,0.9);
@@ -183,14 +180,12 @@
     font-size:40px;font-weight:700;cursor:pointer;
   }
 
-  /* Floating animation */
   @keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
   }
 
-  /* Fade-in visible class */
   .visible{
     opacity:1 !important;
     transform: translateY(0px) !important;
@@ -224,6 +219,7 @@
     }
     nav .hamburger { display: flex; }
   }
+
 </style>
 </head>
 <body>
@@ -254,10 +250,72 @@
 </header>
 
 <main class="container">
-<!-- aapka hero, cards, gallery, about, contact content bilkul same rahega -->
+  <!-- Home Section -->
+  <section id="home" class="hero">
+    <div>
+      <h1>Abeer Shine Works</h1>
+      <p class="lead">Premium car washing & detailing service in Indore, Madhya Pradesh.</p>
+      <div style="margin-top:20px;">
+        <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank">Book Now</a>
+        <a class="btn btn-primary" href="https://www.facebook.com/share/17cexyHUSq/" target="_blank">Facebook</a>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div>Exterior Wash</div>
+          <img src="images/The_same_white_202511251250.jpeg" alt="Exterior Wash" onclick="openLightbox('images/The_same_white_202511251250.jpeg')">
+        </div>
+
+        <div class="card">
+          <div>Interior Cleaning</div>
+          <img src="images/Interior_of_a_202511251251.jpeg" alt="Interior Cleaning" onclick="openLightbox('images/Interior_of_a_202511251251.jpeg')">
+        </div>
+
+        <div class="card">
+          <div>Full Package</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <img src="images/Create_a_wide_202511242106.jpeg" alt="Car wash" onclick="openLightbox('images/Create_a_wide_202511242106.jpeg')">
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <h2>Photo Gallery</h2>
+  <div class="gallery">
+    <img src="images/A_white_maruti_202511251250.jpeg" alt="Photo 1" onclick="openLightbox('images/A_white_maruti_202511251250.jpeg')">
+    <img src="images/The_same_white_202511251250.jpeg" alt="Photo 2" onclick="openLightbox('images/The_same_white_202511251250.jpeg')">
+    <img src="images/Interior_of_a_202511251251.jpeg" alt="Photo 3" onclick="openLightbox('images/Interior_of_a_202511251251.jpeg')">
+    <img src="images/Interior_of_the_202511251251.jpeg" alt="Photo 4" onclick="openLightbox('images/Interior_of_the_202511251251.jpeg')">
+  </div>
+
+  <!-- About -->
+  <section id="about" style="margin-top:40px;">
+    <h2>About Us</h2>
+    <p class="lead" style="margin-top:10px;">
+      Abeer Shine Works aims to deliver professional-quality car wash and detailing with premium-grade care products. We focus on quality, time, and customer satisfaction.
+    </p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="margin-top:40px;">
+    <h2>Contact Us</h2>
+    <p class="lead">For bookings or questions, reach us anytime.</p>
+    <p><strong>Phone:</strong> <a href="tel:+917906199445">+91 79061 99445</a></p>
+    <p><strong>Email:</strong> <a href="mailto:abeershine2005@gmail.com">abeershine2005@gmail.com</a></p>
+    <p><strong>Location:</strong> Indore, Madhya Pradesh</p>
+
+    <div style="display:flex;justify-content:space-between;margin-top:20px;">
+      <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank" 
+         style="font-size:22px;padding:18px 28px;">Book Now</a>
+      <a class="btn btn-primary" href="https://wa.me/917906199445" target="_blank" 
+         style="font-size:22px;padding:18px 28px;">WhatsApp</a>
+    </div>
+  </section>
 </main>
 
-<!-- Lightbox -->
 <div class="lightbox" id="lightbox">
   <span class="close-btn" onclick="closeLightbox()">×</span>
   <img id="lightbox-img" src="" />
