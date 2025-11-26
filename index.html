@@ -11,9 +11,9 @@
   }
 
   *{box-sizing:border-box;margin:0;padding:0;}
+  html, body { height:100%; overflow:hidden; font-family:Inter, Arial, sans-serif; color:white; }
+
   body{
-    font-family:Inter, Arial, sans-serif;
-    color: white;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: url('images/Ultrarealistic_ferrari_car_202511260951.jpeg') no-repeat center center fixed;
@@ -28,58 +28,53 @@
     100% { background-position: 50% 48%; }
   }
 
-  h1,h2,h3,p,a,span{
-    color: white;
-    -webkit-text-stroke: 0.8px white;
-    font-weight: 600;
-  }
-
   header{
     background: var(--card);
     padding:16px 18px;
-    position:sticky;
+    position:fixed;
     top:0;
-    box-shadow:0 2px 10px rgba(0,0,0,0.3);
+    width:100%;
     z-index:50;
     backdrop-filter: blur(6px);
-  }
-
-  .container{
-    max-width:1100px;
-    margin:auto;
-    padding:18px;
-  }
-
-  nav .nav-links a{
-    margin-left:18px;
-    font-weight:600;
-    text-decoration:none;
-    color:white;
+    display:flex;justify-content:space-between;align-items:center;
   }
 
   .brand{display:flex;align-items:center;gap:12px;}
   .logo{
     width:52px;height:52px;
     background:linear-gradient(135deg,#00b8b8,#4f46e5);
-    color:#fff;
-    font-weight:900;
+    color:#fff;font-weight:900;
     border-radius:12px;
     display:flex;align-items:center;justify-content:center;
     font-size:18px;
   }
 
-  .hero{
-    padding:40px 0;
-    display:grid;
-    grid-template-columns:1fr 420px;
-    gap:24px;
+  nav a{
+    margin-left:18px;
+    font-weight:600;
+    text-decoration:none;
+    color:white;
+  }
+
+  section{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding:20px;
     opacity:0;
-    transform: translateY(40px);
+    transform: translateY(60px);
     transition: all 0.8s ease-out;
   }
 
-  h1{font-size:40px;margin-bottom:10px;}
-  .lead{font-size:16px;color:white;}
+  section.visible{
+    opacity:1;
+    transform: translateY(0);
+  }
+
+  h1,h2,p{ text-align:center; -webkit-text-stroke:0.8px white; font-weight:600; }
 
   .btn{
     padding:12px 18px;
@@ -87,7 +82,7 @@
     text-decoration:none;
     font-weight:700;
     display:inline-block;
-    margin-right:10px;
+    margin:10px 5px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: float 3s ease-in-out infinite;
   }
@@ -98,87 +93,6 @@
   }
 
   .btn-primary{background:var(--accent);color:white;}
-  .btn-outline{border:2px solid var(--accent);color:var(--accent);}
-
-  .cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:14px;
-    margin:20px 0;
-  }
-
-  .card{
-    background: var(--card);
-    padding:16px;
-    border-radius:14px;
-    box-shadow:0 6px 14px rgba(255,255,255,0.1);
-    transition: transform 0.3s ease, opacity 0.8s ease;
-    opacity:0;
-    transform: translateY(40px);
-  }
-
-  .card:hover{
-    transform: translateY(-6px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
-  }
-
-  img{
-    width:100%;
-    border-radius:14px;
-    margin-top:16px;
-    cursor:pointer;
-  }
-
-  footer{
-    margin-top:30px;
-    padding:20px;
-    text-align:center;
-    font-size:14px;
-    color:white;
-    backdrop-filter: blur(6px);
-    background: var(--card);
-  }
-
-  @media(max-width:800px){
-    .hero{grid-template-columns:1fr;}
-  }
-
-  .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top:20px;
-    opacity:0;
-    transform: translateY(40px);
-    transition: all 0.8s ease-out;
-  }
-
-  .gallery img {
-    width: 200px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 5px;
-    border: 2px solid white;
-    transition: transform 0.3s;
-  }
-
-  .gallery img:hover {
-    transform: scale(1.05);
-  }
-
-  .lightbox{
-    position:fixed;top:0;left:0;width:100%;height:100%;
-    background:rgba(0,0,0,0.9);
-    display:none;justify-content:center;align-items:center;
-    z-index:9999;flex-direction:column;
-  }
-  .lightbox img{
-    max-width:90%;max-height:90%;border-radius:12px;
-  }
-  .close-btn{
-    position:absolute;top:20px;right:28px;color:#fff;
-    font-size:40px;font-weight:700;cursor:pointer;
-  }
 
   @keyframes float {
     0% { transform: translateY(0px); }
@@ -186,172 +100,106 @@
     100% { transform: translateY(0px); }
   }
 
-  .visible{
-    opacity:1 !important;
-    transform: translateY(0px) !important;
+  .cards{ display:flex; gap:20px; flex-wrap:wrap; justify-content:center; margin-top:20px; }
+  .card{
+    background: var(--card);
+    padding:16px;
+    border-radius:14px;
+    box-shadow:0 6px 14px rgba(255,255,255,0.1);
+    cursor:pointer;
+    transition: transform 0.3s;
   }
+  .card:hover{ transform: translateY(-6px); box-shadow:0 12px 24px rgba(0,0,0,0.3); }
 
-  /* Hamburger Menu */
-  nav .nav-links { display: flex; gap: 18px; }
-  nav .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-  }
-  nav .hamburger div {
-    width: 28px;
-    height: 3px;
-    background: white;
-    border-radius: 2px;
-  }
-  @media(max-width:1000px){
-    nav .nav-links {
-      display: none;
-      flex-direction: column;
-      background: var(--card);
-      position: absolute;
-      top: 60px;
-      right: 18px;
-      padding: 12px;
-      border-radius: 10px;
-      z-index: 100;
-    }
-    nav .hamburger { display: flex; }
-  }
+  img{ max-width:100%; border-radius:12px; margin-top:12px; cursor:pointer; }
 
+  footer{
+    background:var(--card);
+    backdrop-filter: blur(6px);
+    width:100%;
+    text-align:center;
+    padding:15px;
+    position:relative;
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="container" style="display:flex;align-items:center;justify-content:space-between;">
-    <div class="brand">
-      <div class="logo">AS</div>
-      <div>
-        <div style="font-weight:800;font-size:18px;">Abeer Shine Works</div>
-        <div style="font-size:13px;">Indore, MP</div>
-      </div>
+  <div class="brand">
+    <div class="logo">AS</div>
+    <div>
+      <div style="font-weight:800;font-size:18px;">Abeer Shine Works</div>
+      <div style="font-size:13px;">Indore, MP</div>
     </div>
-    <nav>
-      <div class="nav-links" id="navLinks">
-        <a href="home.html">Home</a>
-        <a href="services.html">Pricing</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="hamburger" id="hamburger">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </nav>
   </div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#services">Pricing</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
-<main class="container">
-  <!-- Home Section -->
-  <section id="home" class="hero">
-    <div>
-      <h1>Abeer Shine Works</h1>
-      <p class="lead">Premium car washing & detailing service in Indore, Madhya Pradesh.</p>
-      <div style="margin-top:20px;">
-        <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank">Book Now</a>
-        <a class="btn btn-primary" href="https://www.facebook.com/share/17cexyHUSq/" target="_blank">Facebook</a>
-      </div>
+<!-- Sections -->
+<section id="home">
+  <h1>Abeer Shine Works</h1>
+  <p>Premium car washing & detailing service in Indore, Madhya Pradesh.</p>
+  <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank">Book Now</a>
+  <a class="btn btn-primary" href="https://www.facebook.com/share/17cexyHUSq/" target="_blank">Facebook</a>
+</section>
 
-      <div class="cards">
-        <div class="card">
-          <div>Exterior Wash</div>
-          <img src="images/The_same_white_202511251250.jpeg" alt="Exterior Wash" onclick="openLightbox('images/The_same_white_202511251250.jpeg')">
-        </div>
-
-        <div class="card">
-          <div>Interior Cleaning</div>
-          <img src="images/Interior_of_a_202511251251.jpeg" alt="Interior Cleaning" onclick="openLightbox('images/Interior_of_a_202511251251.jpeg')">
-        </div>
-
-        <div class="card">
-          <div>Full Package</div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <img src="images/Create_a_wide_202511242106.jpeg" alt="Car wash" onclick="openLightbox('images/Create_a_wide_202511242106.jpeg')">
-    </div>
-  </section>
-
-  <!-- Gallery -->
-  <h2>Photo Gallery</h2>
-  <div class="gallery">
-    <img src="images/A_white_maruti_202511251250.jpeg" alt="Photo 1" onclick="openLightbox('images/A_white_maruti_202511251250.jpeg')">
-    <img src="images/The_same_white_202511251250.jpeg" alt="Photo 2" onclick="openLightbox('images/The_same_white_202511251250.jpeg')">
-    <img src="images/Interior_of_a_202511251251.jpeg" alt="Photo 3" onclick="openLightbox('images/Interior_of_a_202511251251.jpeg')">
-    <img src="images/Interior_of_the_202511251251.jpeg" alt="Photo 4" onclick="openLightbox('images/Interior_of_the_202511251251.jpeg')">
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="cards">
+    <div class="card">Exterior Wash</div>
+    <div class="card">Interior Cleaning</div>
+    <div class="card">Full Package</div>
   </div>
+</section>
 
-  <!-- About -->
-  <section id="about" style="margin-top:40px;">
-    <h2>About Us</h2>
-    <p class="lead" style="margin-top:10px;">
-      Abeer Shine Works aims to deliver professional-quality car wash and detailing with premium-grade care products. We focus on quality, time, and customer satisfaction.
-    </p>
-  </section>
+<section id="about">
+  <h2>About Us</h2>
+  <p>Abeer Shine Works aims to deliver professional-quality car wash and detailing with premium-grade care products. We focus on quality, time, and customer satisfaction.</p>
+</section>
 
-  <!-- Contact -->
-  <section id="contact" style="margin-top:40px;">
-    <h2>Contact Us</h2>
-    <p class="lead">For bookings or questions, reach us anytime.</p>
-    <p><strong>Phone:</strong> <a href="tel:+917906199445">+91 79061 99445</a></p>
-    <p><strong>Email:</strong> <a href="mailto:abeershine2005@gmail.com">abeershine2005@gmail.com</a></p>
-    <p><strong>Location:</strong> Indore, Madhya Pradesh</p>
-
-    <div style="display:flex;justify-content:space-between;margin-top:20px;">
-      <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank" 
-         style="font-size:22px;padding:18px 28px;">Book Now</a>
-      <a class="btn btn-primary" href="https://wa.me/917906199445" target="_blank" 
-         style="font-size:22px;padding:18px 28px;">WhatsApp</a>
-    </div>
-  </section>
-</main>
-
-<div class="lightbox" id="lightbox">
-  <span class="close-btn" onclick="closeLightbox()">×</span>
-  <img id="lightbox-img" src="" />
-</div>
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p><strong>Phone:</strong> <a href="tel:+917906199445">+91 79061 99445</a></p>
+  <p><strong>Email:</strong> <a href="mailto:abeershine2005@gmail.com">abeershine2005@gmail.com</a></p>
+  <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank">Book Now</a>
+  <a class="btn btn-primary" href="https://wa.me/917906199445" target="_blank">WhatsApp</a>
+</section>
 
 <footer>
   © <script>document.write(new Date().getFullYear());</script> Abeer Shine Works — All Rights Reserved.
 </footer>
 
 <script>
-function openLightbox(src){
-  document.getElementById("lightbox-img").src = src;
-  document.getElementById("lightbox").style.display = "flex";
-}
-function closeLightbox(){
-  document.getElementById("lightbox").style.display = "none";
-}
+// Full-page scroll effect
+let sections = document.querySelectorAll("section");
+let current = 0;
+let isScrolling = false;
 
-// Fade-in on scroll
-const faders = document.querySelectorAll('.hero, .card, .gallery, #about, #contact');
-const appearOptions = { threshold: 0.2 };
-const appearOnScroll = new IntersectionObserver(function(entries, observer){
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
+function showSection(index){
+  sections.forEach((sec,i)=>{
+    sec.classList.remove("visible");
+    if(i===index) sec.classList.add("visible");
   });
-}, appearOptions);
-faders.forEach(fader => { appearOnScroll.observe(fader); });
+}
 
-// Hamburger toggle
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => {
-  navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+showSection(current);
+
+window.addEventListener("wheel", (e)=>{
+  if(isScrolling) return;
+  isScrolling = true;
+  if(e.deltaY > 0){
+    current = Math.min(current + 1, sections.length-1);
+  } else {
+    current = Math.max(current - 1, 0);
+  }
+  showSection(current);
+  setTimeout(()=>{isScrolling=false},1000); // 1 sec delay between scrolls
 });
 
 // Mouse movement background
