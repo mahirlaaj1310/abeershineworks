@@ -167,7 +167,7 @@
   }
 
   /* Hamburger Menu */
-  nav .nav-links { display: flex; gap: 18px; align-items:center;}
+  nav .nav-links { display: flex; gap: 18px; }
   nav .hamburger {
     display: none;
     flex-direction: column;
@@ -194,23 +194,6 @@
     }
     nav .hamburger { display: flex; }
   }
-
-  /* Gallery button */
-  .gallery-btn{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    cursor:pointer;
-    font-weight:bold;
-    margin-left:18px;
-  }
-  .gallery-btn span{
-    width:22px;
-    height:3px;
-    background:white;
-    margin:3px 0;
-    border-radius:2px;
-  }
 </style>
 </head>
 
@@ -230,20 +213,13 @@
     </div>
 
     <nav>
-      <div style="display:flex;align-items:center;">
-        <div class="nav-links" id="navLinks">
-          <a href="home.html">Home</a>
-          <a href="services.html">Pricing</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-        </div>
-        <div class="gallery-btn" onclick="window.location.href='gallery.html'">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+      <div class="nav-links" id="navLinks">
+        <a href="home.html">Home</a>
+        <a href="services.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="gallery.html">Gallery</a> <!-- Added Gallery link -->
       </div>
-
       <div class="hamburger" id="hamburger">
         <div></div><div></div><div></div>
       </div>
