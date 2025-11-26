@@ -14,8 +14,6 @@
   body{
     font-family:Inter, Arial, sans-serif;
     color: white;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     background: url('images/Ultrarealistic_ferrari_car_202511260951.jpeg') no-repeat center center fixed;
     background-size: cover;
     transition: background-position 0.1s ease;
@@ -220,9 +218,33 @@
     nav .hamburger { display: flex; }
   }
 
+  /* ---------------- WATER EFFECT ------------------- */
+  .water-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: url("https://i.ibb.co/5M0xCzX/water-texture.png");
+    opacity: 0.28;
+    mix-blend-mode: overlay;
+    animation: waterMove 12s ease-in-out infinite alternate;
+    z-index: 2;
+  }
+
+  @keyframes waterMove {
+    0%   { transform: translate(-20px, -10px) scale(1.05); }
+    50%  { transform: translate(20px, 15px) scale(1.08); }
+    100% { transform: translate(-10px, -20px) scale(1.04); }
+  }
 </style>
 </head>
+
 <body>
+
+<!-- WATER EFFECT LAYER -->
+<div class="water-effect"></div>
 
 <header>
   <div class="container" style="display:flex;align-items:center;justify-content:space-between;">
@@ -233,6 +255,7 @@
         <div style="font-size:13px;">Indore, MP</div>
       </div>
     </div>
+
     <nav>
       <div class="nav-links" id="navLinks">
         <a href="home.html">Home</a>
@@ -241,9 +264,7 @@
         <a href="contact.html">Contact</a>
       </div>
       <div class="hamburger" id="hamburger">
-        <div></div>
-        <div></div>
-        <div></div>
+        <div></div><div></div><div></div>
       </div>
     </nav>
   </div>
@@ -255,6 +276,7 @@
     <div>
       <h1>Abeer Shine Works</h1>
       <p class="lead">Premium car washing & detailing service in Indore, Madhya Pradesh.</p>
+
       <div style="margin-top:20px;">
         <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank">Book Now</a>
         <a class="btn btn-primary" href="https://www.facebook.com/share/17cexyHUSq/" target="_blank">Facebook</a>
@@ -263,12 +285,12 @@
       <div class="cards">
         <div class="card">
           <div>Exterior Wash</div>
-          <img src="images/The_same_white_202511251250.jpeg" alt="Exterior Wash" onclick="openLightbox('images/The_same_white_202511251250.jpeg')">
+          <img src="images/The_same_white_202511251250.jpeg" onclick="openLightbox('images/The_same_white_202511251250.jpeg')">
         </div>
 
         <div class="card">
           <div>Interior Cleaning</div>
-          <img src="images/Interior_of_a_202511251251.jpeg" alt="Interior Cleaning" onclick="openLightbox('images/Interior_of_a_202511251251.jpeg')">
+          <img src="images/Interior_of_a_202511251251.jpeg" onclick="openLightbox('images/Interior_of_a_202511251251.jpeg')">
         </div>
 
         <div class="card">
@@ -278,40 +300,34 @@
     </div>
 
     <div>
-      <img src="images/Create_a_wide_202511242106.jpeg" alt="Car wash" onclick="openLightbox('images/Create_a_wide_202511242106.jpeg')">
+      <img src="images/Create_a_wide_202511242106.jpeg" onclick="openLightbox('images/Create_a_wide_202511242106.jpeg')">
     </div>
   </section>
 
-  <!-- Gallery -->
   <h2>Photo Gallery</h2>
   <div class="gallery">
-    <img src="images/A_white_maruti_202511251250.jpeg" alt="Photo 1" onclick="openLightbox('images/A_white_maruti_202511251250.jpeg')">
-    <img src="images/The_same_white_202511251250.jpeg" alt="Photo 2" onclick="openLightbox('images/The_same_white_202511251250.jpeg')">
-    <img src="images/Interior_of_a_202511251251.jpeg" alt="Photo 3" onclick="openLightbox('images/Interior_of_a_202511251251.jpeg')">
-    <img src="images/Interior_of_the_202511251251.jpeg" alt="Photo 4" onclick="openLightbox('images/Interior_of_the_202511251251.jpeg')">
+    <img src="images/A_white_maruti_202511251250.jpeg" onclick="openLightbox('images/A_white_maruti_202511251250.jpeg')">
+    <img src="images/The_same_white_202511251250.jpeg" onclick="openLightbox('images/The_same_white_202511251250.jpeg')">
+    <img src="images/Interior_of_a_202511251251.jpeg" onclick="openLightbox('images/Interior_of_a_202511251251.jpeg')">
+    <img src="images/Interior_of_the_202511251251.jpeg" onclick="openLightbox('images/Interior_of_the_202511251251.jpeg')">
   </div>
 
-  <!-- About -->
   <section id="about" style="margin-top:40px;">
     <h2>About Us</h2>
-    <p class="lead" style="margin-top:10px;">
-      Abeer Shine Works aims to deliver professional-quality car wash and detailing with premium-grade care products. We focus on quality, time, and customer satisfaction.
-    </p>
+    <p class="lead">Abeer Shine Works aims to deliver professional-quality car wash and detailing with premium-grade care products.</p>
   </section>
 
-  <!-- Contact -->
   <section id="contact" style="margin-top:40px;">
     <h2>Contact Us</h2>
     <p class="lead">For bookings or questions, reach us anytime.</p>
+
     <p><strong>Phone:</strong> <a href="tel:+917906199445">+91 79061 99445</a></p>
     <p><strong>Email:</strong> <a href="mailto:abeershine2005@gmail.com">abeershine2005@gmail.com</a></p>
     <p><strong>Location:</strong> Indore, Madhya Pradesh</p>
 
     <div style="display:flex;justify-content:space-between;margin-top:20px;">
-      <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank" 
-         style="font-size:22px;padding:18px 28px;">Book Now</a>
-      <a class="btn btn-primary" href="https://wa.me/917906199445" target="_blank" 
-         style="font-size:22px;padding:18px 28px;">WhatsApp</a>
+      <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank" style="font-size:22px;padding:18px 28px;">Book Now</a>
+      <a class="btn btn-primary" href="https://wa.me/917906199445" target="_blank" style="font-size:22px;padding:18px 28px;">WhatsApp</a>
     </div>
   </section>
 </main>
@@ -334,7 +350,6 @@ function closeLightbox(){
   document.getElementById("lightbox").style.display = "none";
 }
 
-// Fade-in on scroll
 const faders = document.querySelectorAll('.hero, .card, .gallery, #about, #contact');
 const appearOptions = { threshold: 0.2 };
 const appearOnScroll = new IntersectionObserver(function(entries, observer){
@@ -347,7 +362,6 @@ const appearOnScroll = new IntersectionObserver(function(entries, observer){
 }, appearOptions);
 faders.forEach(fader => { appearOnScroll.observe(fader); });
 
-// Hamburger toggle
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 hamburger.addEventListener('click', () => {
@@ -361,5 +375,6 @@ document.addEventListener('mousemove', (e) => {
   document.body.style.backgroundPosition = `${50 + x*5}% ${50 + y*5}%`;
 });
 </script>
+
 </body>
 </html>
