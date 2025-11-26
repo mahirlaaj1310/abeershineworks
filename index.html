@@ -113,10 +113,11 @@
   .btn-outline{border:2px solid var(--accent);color:var(--accent);}
 
   .cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:14px;
+    display:flex;
+    justify-content:space-between;
     margin:20px 0;
+    flex-wrap:wrap;
+    gap:20px;
   }
 
   .card{
@@ -134,11 +135,18 @@
     box-shadow: 0 12px 24px rgba(0,0,0,0.3);
   }
 
-  img{
+  .card img{
     width:100%;
     border-radius:14px;
-    margin-top:16px;
+    object-fit:cover;
     cursor:pointer;
+  }
+
+  .card p{
+    margin-top:10px;
+    font-size:14px;
+    color:#ddd;
+    line-height:1.5;
   }
 
   footer{
@@ -153,6 +161,7 @@
 
   @media(max-width:800px){
     .hero{grid-template-columns:1fr;}
+    .cards{flex-direction:column;}
   }
 
   @keyframes float {
@@ -199,7 +208,6 @@
 
 <body>
 
-<!-- Background slideshow -->
 <div class="bg-slider"></div>
 
 <header>
@@ -218,7 +226,6 @@
         <a href="services.html">Pricing</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a href="gallery.html">Gallery</a> <!-- Added Gallery link -->
       </div>
       <div class="hamburger" id="hamburger">
         <div></div><div></div><div></div>
@@ -239,16 +246,20 @@
       </div>
 
       <div class="cards">
-        <div class="card">
-          <div>Exterior Wash</div>
-          <img src="images/The_same_white_202511251250.jpeg" onclick="openLightbox('images/The_same_white_202511251250.jpeg')">
+        <div class="card" style="width:45%;">
+          <div style="font-size:20px;font-weight:700;margin-bottom:8px;">Exterior Wash</div>
+          <img src="images/The_same_white_202511251250.jpeg" onclick="openLightbox('images/The_same_white_202511251250.jpeg')" style="height:180px;">
+          <p>
+            Exterior wash includes car body cleaning, polishing, tire shine, and windows cleaning. Ensures your car looks shiny and fresh.
+          </p>
         </div>
-        <div class="card">
-          <div>Interior Cleaning</div>
-          <img src="images/Interior_of_a_202511251251.jpeg" onclick="openLightbox('images/Interior_of_a_202511251251.jpeg')">
-        </div>
-        <div class="card">
-          <div>Full Package</div>
+
+        <div class="card" style="width:45%;">
+          <div style="font-size:20px;font-weight:700;margin-bottom:8px;">Interior Cleaning</div>
+          <img src="images/Interior_of_a_202511251251.jpeg" onclick="openLightbox('images/Interior_of_a_202511251251.jpeg')" style="height:180px;">
+          <p>
+            Interior cleaning covers vacuuming, dashboard wipe, seat cleaning, and floor mats. Keeps the inside of your car neat and hygienic.
+          </p>
         </div>
       </div>
     </div>
