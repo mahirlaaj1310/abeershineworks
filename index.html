@@ -121,13 +121,6 @@ h1{font-size:40px;margin-bottom:10px;}
   flex:1;
 }
 
-.card img{
-  width:100%;
-  border-radius:14px;
-  margin-top:16px;
-  cursor:pointer;
-}
-
 .description{
   margin-top:12px;
   font-size:14px;
@@ -239,16 +232,14 @@ nav .hamburger div {
   <section class="hero">
     <div class="card">
       <div>Exterior Wash</div>
-      <img src="images/The_same_white_202511251250.jpeg" onclick="openLightbox('images/The_same_white_202511251250.jpeg')">
       <p class="description">
-        Complete exterior cleaning including washing, waxing, polishing, and tire shine. Leaves your car sparkling clean and protected.
+        Complete exterior cleaning including washing, waxing, polishing, and tire shine. Your car's body, windows, and wheels will look spotless and protected.
       </p>
     </div>
     <div class="card">
-      <div>Interior Cleaning</div>
-      <img src="images/Interior_of_a_202511251251.jpeg" onclick="openLightbox('images/Interior_of_a_202511251251.jpeg')">
+      <div><strong>Interior Cleaning</strong></div>
       <p class="description">
-        Professional interior detailing including vacuuming, dashboard cleaning, upholstery treatment, and odor removal.
+        Professional interior detailing including vacuuming, dashboard cleaning, upholstery treatment, and odor removal. Ensures a clean, fresh, and hygienic interior for your vehicle.
       </p>
     </div>
   </section>
@@ -275,26 +266,11 @@ nav .hamburger div {
 
 </main>
 
-<div class="lightbox" id="lightbox">
-  <span class="close-btn" onclick="closeLightbox()">×</span>
-  <img id="lightbox-img" src="" />
-</div>
-
 <footer>
   © <script>document.write(new Date().getFullYear());</script> Abeer Shine Works — All Rights Reserved.
 </footer>
 
 <script>
-function openLightbox(src){
-  const lb = document.getElementById("lightbox");
-  const lbImg = document.getElementById("lightbox-img");
-  lb.style.display = "flex";
-  lbImg.src = src;
-}
-function closeLightbox(){
-  document.getElementById("lightbox").style.display = "none";
-}
-
 const faders = document.querySelectorAll('.hero, .card, #about, #contact');
 const appearOptions = { threshold: 0.2 };
 const appearOnScroll = new IntersectionObserver(function(entries, observer){
