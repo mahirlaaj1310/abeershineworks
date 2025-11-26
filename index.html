@@ -14,16 +14,30 @@
   body{
     font-family:Inter, Arial, sans-serif;
     color: white;
-    background: url('images/Ultrarealistic_ferrari_car_202511260951.jpeg') no-repeat center center fixed;
-    background-size: cover;
-    transition: background-position 0.1s ease;
-    animation: bgFloat 20s ease-in-out infinite alternate;
+    overflow-x: hidden;
   }
 
-  @keyframes bgFloat {
-    0% { background-position: 50% 48%; }
-    50% { background-position: 50% 52%; }
-    100% { background-position: 50% 48%; }
+  /* Background Slideshow */
+  .bg-slider{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    z-index:-1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: slide 15s infinite;
+  }
+
+  @keyframes slide {
+    0%   { background-image: url('images/Ultrarealistic_ferrari_car_202511260951.jpeg'); }
+    20%  { background-image: url('images/back1.jpeg'); }
+    40%  { background-image: url('images/back2.jpeg'); }
+    60%  { background-image: url('images/back3.jpeg'); }
+    80%  { background-image: url('images/back4.jpeg'); }
+    100% { background-image: url('images/Ultrarealistic_ferrari_car_202511260951.jpeg'); }
   }
 
   h1,h2,h3,p,a,span{
@@ -217,11 +231,13 @@
     }
     nav .hamburger { display: flex; }
   }
-
 </style>
 </head>
 
 <body>
+
+<!-- Background slideshow -->
+<div class="bg-slider"></div>
 
 <header>
   <div class="container" style="display:flex;align-items:center;justify-content:space-between;">
@@ -248,12 +264,11 @@
 </header>
 
 <main class="container">
-  <!-- Home Section -->
+  <!-- Hero Section -->
   <section id="home" class="hero">
     <div>
       <h1>Abeer Shine Works</h1>
       <p class="lead">Premium car washing & detailing service in Indore, Madhya Pradesh.</p>
-
       <div style="margin-top:20px;">
         <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank">Book Now</a>
         <a class="btn btn-primary" href="https://www.facebook.com/share/17cexyHUSq/" target="_blank">Facebook</a>
@@ -264,12 +279,10 @@
           <div>Exterior Wash</div>
           <img src="images/The_same_white_202511251250.jpeg" onclick="openLightbox('images/The_same_white_202511251250.jpeg')">
         </div>
-
         <div class="card">
           <div>Interior Cleaning</div>
           <img src="images/Interior_of_a_202511251251.jpeg" onclick="openLightbox('images/Interior_of_a_202511251251.jpeg')">
         </div>
-
         <div class="card">
           <div>Full Package</div>
         </div>
@@ -349,7 +362,7 @@ hamburger.addEventListener('click', () => {
 document.addEventListener('mousemove', (e) => {
   const x = e.clientX / window.innerWidth;
   const y = e.clientY / window.innerHeight;
-  document.body.style.backgroundPosition = `${50 + x*5}% ${50 + y*5}%`;
+  document.querySelector('.bg-slider').style.backgroundPosition = `${50 + x*5}% ${50 + y*5}%`;
 });
 </script>
 
