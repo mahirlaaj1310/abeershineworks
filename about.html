@@ -19,11 +19,11 @@ body{
   font-family:Inter, Arial, sans-serif;
   color: var(--text);
   overflow-x:hidden;
-  perspective:1px; /* for parallax illusion */
 }
 
-/* SPLIT BACKGROUND WITH PARALLAX */
-.bg-upper, .bg-lower{
+/* SPLIT BACKGROUND */
+body::before, body::after{
+  content:"";
   position:fixed;
   width:100%;
   height:50vh;
@@ -31,20 +31,21 @@ body{
   background-size:cover;
   background-position:center;
   z-index:-2;
-  transform-origin:center;
-  transition: transform 0.1s ease-out;
 }
 
-.bg-upper{
+body::before{
   top:0;
   background-image:url('images/aboutback1.jpeg');
-  filter:brightness(0.65);
 }
 
-.bg-lower{
+body::after{
   bottom:0;
   background-image:url('images/aboutback2.jpeg.png');
-  filter:brightness(0.65);
+}
+
+/* OVERLAY */
+body::after, body::before{
+  filter:brightness(0.6);
 }
 
 /* HERO / HEADER */
@@ -135,10 +136,6 @@ body{
 
 <body>
 
-<!-- BACKGROUNDS -->
-<div class="bg-upper"></div>
-<div class="bg-lower"></div>
-
 <!-- HERO -->
 <div class="hero">
   <h1>About Us</h1>
@@ -190,17 +187,6 @@ body{
 </div>
 
 <a href="index.html" class="footer-btn">⬅ Back to Home</a>
-
-<script>
-/* PARALLAX SCROLL */
-window.addEventListener('scroll', ()=>{
-  const scrollTop = window.scrollY;
-  const upper = document.querySelector('.bg-upper');
-  const lower = document.querySelector('.bg-lower');
-  upper.style.transform = `translateY(${scrollTop * 0.2}px)`;
-  lower.style.transform = `translateY(-${scrollTop * 0.2}px)`;
-});
-</script>
 
 </body>
 </html>
