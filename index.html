@@ -15,6 +15,7 @@ body{
   font-family:Inter, Arial, sans-serif;
   color: white;
   overflow-x: hidden;
+  background:#000;
 }
 
 .bg-slider{
@@ -81,15 +82,35 @@ nav .nav-links a{
 .hero{
   padding:40px 0;
   display:flex;
-  justify-content:space-between;
-  gap:80px; /* zyada gap side-by-side */
+  flex-direction:column;
+  gap:40px;
+  text-align:center;
   opacity:0;
   transform: translateY(40px);
   transition: all 0.8s ease-out;
 }
 
-h1{font-size:40px;margin-bottom:10px;}
-.lead{font-size:16px;color:white;}
+h1.main-title{
+  font-size:70px;
+  text-align:center;
+  letter-spacing:2px;
+  width:100%;
+}
+
+.description{
+  font-size:18px;
+  line-height:1.8;
+  color:#fff;
+  -webkit-text-stroke: 0px;
+  font-weight:500;
+  max-width:700px;
+  margin:auto;
+  text-align:left;
+}
+
+.description strong{
+  font-weight:700;
+}
 
 .btn{
   padding:12px 18px;
@@ -110,33 +131,6 @@ h1{font-size:40px;margin-bottom:10px;}
 .btn-primary{background:var(--accent);color:white;}
 .btn-outline{border:2px solid var(--accent);color:var(--accent);}
 
-.card{
-  background: var(--card);
-  padding:16px;
-  border-radius:14px;
-  box-shadow:0 6px 14px rgba(255,255,255,0.1);
-  transition: transform 0.3s ease, opacity 0.8s ease;
-  opacity:0;
-  transform: translateY(40px);
-  flex:1;
-}
-
-.card img{
-  width:100%;
-  border-radius:14px;
-  margin-top:16px;
-  cursor:pointer;
-}
-
-.description{
-  margin-top:12px;
-  font-size:14px;
-  line-height:1.5;
-  color:#fff;
-  -webkit-text-stroke: 0px;
-  font-weight:500;
-}
-
 footer{
   margin-top:30px;
   padding:20px;
@@ -145,10 +139,6 @@ footer{
   color:white;
   backdrop-filter: blur(6px);
   background: var(--card);
-}
-
-@media(max-width:800px){
-  .hero{flex-direction:column;gap:30px;}
 }
 
 @keyframes float {
@@ -189,21 +179,6 @@ nav .hamburger div {
   }
   nav .hamburger { display: flex; }
 }
-
-/* Lightbox */
-.lightbox{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  background:rgba(0,0,0,0.95);
-  display:none;justify-content:center;align-items:center;
-  z-index:9999;flex-direction:column;
-}
-.lightbox img{
-  max-width:90%;max-height:90%;border-radius:12px;
-}
-.close-btn{
-  position:absolute;top:20px;right:28px;color:#fff;
-  font-size:40px;font-weight:700;cursor:pointer;
-}
 </style>
 </head>
 
@@ -214,10 +189,6 @@ nav .hamburger div {
   <div class="container" style="display:flex;align-items:center;justify-content:space-between;">
     <div class="brand">
       <div class="logo">AS</div>
-      <div>
-        <div style="font-weight:800;font-size:18px;">Abeer Shine Works</div>
-        <div style="font-size:13px;">Indore, MP</div>
-      </div>
     </div>
     <nav>
       <div class="nav-links" id="navLinks">
@@ -237,87 +208,56 @@ nav .hamburger div {
 <main class="container">
 
   <section class="hero">
-    <div class="card">
-      <div>Exterior Wash</div>
-      <img src="images/The_same_white_202511251250.jpeg" onclick="openLightbox('images/The_same_white_202511251250.jpeg')">
-      <p class="description">
-        Complete exterior cleaning including washing, waxing, polishing, and tire shine. Leaves your car sparkling clean and protected.
-      </p>
+    <h1 class="main-title">Abeer Shine Works</h1>
+
+    <div class="description">
+      <strong>Exterior Wash:</strong> Complete exterior cleaning including washing, waxing, polishing, and tire shine. Leaves your car sparkling clean and protected.
     </div>
-    <div class="card">
-      <div>Interior Cleaning</div>
-      <img src="images/Interior_of_a_202511251251.jpeg" onclick="openLightbox('images/Interior_of_a_202511251251.jpeg')">
-      <p class="description">
-        Professional interior detailing including vacuuming, dashboard cleaning, upholstery treatment, and odor removal.
-      </p>
+
+    <div class="description">
+      <strong>Interior Cleaning:</strong> Professional interior detailing including vacuuming, dashboard cleaning, upholstery treatment, and odor removal.
     </div>
-  </section>
 
-  <!-- Bottom Buttons -->
-  <div style="display:flex;justify-content:center;gap:20px;margin:40px 0;">
-    <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank" style="font-size:22px;padding:18px 28px;">Book Now</a>
-    <a class="btn btn-primary" href="https://wa.me/917906199445" target="_blank" style="font-size:22px;padding:18px 28px;">WhatsApp</a>
-    <a class="btn btn-primary" href="https://www.facebook.com/share/1EctMousLf/" target="_blank" style="font-size:22px;padding:18px 28px;">Facebook</a>
-  </div>
+    <!-- Bottom Buttons -->
+    <div style="display:flex;justify-content:center;gap:20px;margin:40px 0;">
+      <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank" style="font-size:22px;padding:18px 28px;">Book Now</a>
+      <a class="btn btn-primary" href="https://wa.me/917906199445" target="_blank" style="font-size:22px;padding:18px 28px;">WhatsApp</a>
+      <a class="btn btn-primary" href="https://www.facebook.com/share/1EctMousLf/" target="_blank" style="font-size:22px;padding:18px 28px;">Facebook</a>
+    </div>
 
-  <section id="about" style="margin-top:60px;">
-    <h2>About Us</h2>
-    <p class="lead">Abeer Shine Works aims to deliver professional-quality car wash and detailing with premium-grade care products.</p>
-  </section>
+    <section id="about" style="margin-top:60px;">
+      <h2>About Us</h2>
+      <p class="lead">Abeer Shine Works aims to deliver professional-quality car wash and detailing with premium-grade care products.</p>
+    </section>
 
-  <section id="contact" style="margin-top:40px;">
-    <h2>Contact Us</h2>
-    <p class="lead">For bookings or questions, reach us anytime.</p>
-    <p><strong>Phone:</strong> <a href="tel:+917906199445">+91 79061 99445</a></p>
-    <p><strong>Email:</strong> <a href="mailto:abeershine2005@gmail.com">abeershine2005@gmail.com</a></p>
-    <p><strong>Location:</strong> Indore, Madhya Pradesh</p>
-  </section>
+    <section id="contact" style="margin-top:40px;">
+      <h2>Contact Us</h2>
+      <p class="lead">For bookings or questions, reach us anytime.</p>
+      <p><strong>Phone:</strong> <a href="tel:+917906199445">+91 79061 99445</a></p>
+      <p><strong>Email:</strong> <a href="mailto:abeershine2005@gmail.com">abeershine2005@gmail.com</a></p>
+      <p><strong>Location:</strong> Indore, Madhya Pradesh</p>
+    </section>
 
 </main>
-
-<div class="lightbox" id="lightbox">
-  <span class="close-btn" onclick="closeLightbox()">×</span>
-  <img id="lightbox-img" src="" />
-</div>
 
 <footer>
   © <script>document.write(new Date().getFullYear());</script> Abeer Shine Works — All Rights Reserved.
 </footer>
 
 <script>
-function openLightbox(src){
-  const lb = document.getElementById("lightbox");
-  const lbImg = document.getElementById("lightbox-img");
-  lb.style.display = "flex";
-  lbImg.src = src;
-}
-function closeLightbox(){
-  document.getElementById("lightbox").style.display = "none";
-}
-
-const faders = document.querySelectorAll('.hero, .card, #about, #contact');
-const appearOptions = { threshold: 0.2 };
-const appearOnScroll = new IntersectionObserver(function(entries, observer){
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, appearOptions);
-faders.forEach(fader => { appearOnScroll.observe(fader); });
-
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 hamburger.addEventListener('click', () => {
   navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
 });
 
+// Mouse movement background
 document.addEventListener('mousemove', (e) => {
   const x = e.clientX / window.innerWidth;
   const y = e.clientY / window.innerHeight;
   document.querySelector('.bg-slider').style.backgroundPosition = `${50 + x*5}% ${50 + y*5}%`;
 });
 </script>
+
 </body>
 </html>
