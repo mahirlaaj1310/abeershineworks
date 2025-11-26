@@ -7,7 +7,7 @@
 
 <style>
 :root {
-  --accent: #00b8b8;
+  --accent:#00b8b8;
   --bg-overlay: rgba(0,0,0,0.45);
   --glass: rgba(255,255,255,0.06);
   --card: rgba(255,255,255,0.06);
@@ -29,7 +29,7 @@ body {
   overflow-x: hidden;
 }
 
-/* BACKGROUND SLIDER - kept same images + animation but dimmed */
+/* BACKGROUND SLIDER */
 .bg-slider{
   position: fixed;
   top:0; left:0;
@@ -50,7 +50,6 @@ body {
   100% { background-image: url('images/back4.jpeg'); }
 }
 
-/* subtle dark overlay so text is readable */
 .bg-overlay {
   position: fixed; inset:0; z-index:-1;
   background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
@@ -58,7 +57,7 @@ body {
 
 /* GLOBAL TEXT */
 h1,h2,h3,p,a,span { color: var(--white); }
-a { color: inherit; }
+a { color: inherit; text-decoration:none; }
 
 /* HEADER */
 header{
@@ -70,7 +69,7 @@ header{
   border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 
-/* Brand area (centered, clean) */
+/* Brand + Hamburger container */
 .brand-wrap {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -80,7 +79,7 @@ header{
   gap:18px;
 }
 
-/* Left group: logo + title */
+/* Brand logo + title */
 .brand {
   display:flex;
   gap:16px;
@@ -88,7 +87,7 @@ header{
   text-decoration: none;
 }
 
-/* Logo refined */
+/* Logo */
 .logo {
   width:80px;
   height:80px;
@@ -99,14 +98,13 @@ header{
   box-shadow: 0 8px 30px rgba(0,0,0,0.45);
   flex-shrink:0;
 }
-.logo img { width:100%; height:100%; object-fit:cover; display:block; }
+.logo img { width:100%; height:100%; object-fit:cover; }
 
-/* Brand title refined — larger but elegant */
+/* Brand title */
 .brand-title {
   font-size:28px;
   font-weight:800;
   letter-spacing:0.2px;
-  color: var(--white);
   line-height:1;
 }
 .brand-sub {
@@ -116,27 +114,16 @@ header{
   font-weight:600;
 }
 
-/* Right: nav actions (desktop) */
-.header-actions{
-  display:flex;
-  gap:12px;
-  align-items:center;
-}
-
-/* NAV: hamburger & panel */
-nav{ position:relative; }
-
-/* hamburger (3-line) kept at top-left for mobile; small and subtle */
+/* Hamburger menu */
 .hamburger {
   display:flex; flex-direction:column; gap:5px; cursor:pointer;
   width:34px; height:26px; justify-content:center;
 }
 .hamburger div {
   height:3px; background:var(--white); border-radius:3px;
-  transition: all 180ms ease;
 }
 
-/* nav links panel (mobile overlay) */
+/* nav links panel */
 .nav-links {
   position: fixed;
   top: 18px;
@@ -155,7 +142,6 @@ nav{ position:relative; }
 .nav-links a {
   padding:10px 12px;
   border-radius:8px;
-  text-decoration:none;
   font-weight:600;
   color:var(--white);
   transition: background 180ms;
@@ -163,7 +149,7 @@ nav{ position:relative; }
 }
 .nav-links a:hover { background: rgba(0,0,0,0.2); }
 
-/* layout container */
+/* MAIN CONTAINER */
 .container {
   max-width: var(--max-width);
   margin: 18px auto;
@@ -180,7 +166,7 @@ nav{ position:relative; }
   flex-wrap: wrap;
 }
 
-/* cards refined */
+/* cards */
 .card {
   background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
   border: 1px solid rgba(255,255,255,0.04);
@@ -198,7 +184,7 @@ nav{ position:relative; }
 .card h3 { font-size:18px; margin-bottom:8px; font-weight:700; }
 .description { color: var(--muted); font-size:14px; line-height:1.5; }
 
-/* CTAs row (kept same links) - flattened, no float */
+/* CTAs row (buttons same subtle style) */
 .cta-row {
   display:flex;
   gap:14px;
@@ -221,11 +207,6 @@ nav{ position:relative; }
   background: rgba(255,255,255,0.06);
   color: var(--white);
   box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-}
-.btn-primary {
-  background: linear-gradient(90deg, var(--accent), #00d6d6);
-  color: #fff;
-  box-shadow: 0 10px 28px rgba(0,184,184,0.12);
 }
 .btn:hover { transform: translateY(-6px); }
 
@@ -253,20 +234,14 @@ footer {
 @media (min-width: 900px) {
   .hero { justify-content: space-between; }
   .card { width: 48%; max-width: none; }
-  .nav-links { display: none !important; position: static; background: transparent; padding: 0; gap:0; box-shadow:none; flex-direction:row; }
+  .nav-links { display: flex !important; position: static; background: transparent; padding: 0; gap:12px; box-shadow:none; flex-direction:row; }
   .nav-links a { background: transparent; padding:8px 12px; border: none; }
   .hamburger { display:none; }
-  .brand-wrap { align-items:center; }
-  .header-actions { display:flex; gap:12px; }
 }
 @media (max-width: 899px) {
-  .brand-title { font-size:18px; }
-  .brand-sub { display:none; }
-  .brand-wrap { gap:12px; }
+  .hamburger { display:flex !important; }
   .card { width:100%; }
 }
-
-/* small tweaks to ensure readability on mobile */
 @media (max-width: 420px) {
   .logo { width:64px; height:64px; }
   .brand-title { font-size:16px; }
@@ -283,7 +258,6 @@ footer {
 <header>
   <div class="brand-wrap">
     <div style="display:flex;align-items:center;gap:18px">
-      <!-- Keep hamburger visible on mobile -->
       <div class="hamburger" id="hamburger" aria-label="Open menu" title="Menu">
         <div></div><div></div><div></div>
       </div>
@@ -300,7 +274,6 @@ footer {
     </div>
 
     <div class="header-actions" aria-hidden="false">
-      <!-- Desktop nav shown in wide screens via CSS; links remain same -->
       <nav>
         <div class="nav-links" id="navLinks" role="navigation" aria-label="Main menu">
           <a href="index.html">Home</a>
@@ -312,12 +285,6 @@ footer {
           <a href="interior.html">Interior</a>
         </div>
       </nav>
-
-      <!-- keep primary CTAs visible on header for quick access on desktop -->
-      <div style="display:flex;gap:10px;align-items:center;">
-        <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank">Book Now</a>
-        <a class="btn" href="https://wa.me/917906199445" target="_blank">WhatsApp</a>
-      </div>
     </div>
   </div>
 </header>
@@ -345,7 +312,7 @@ footer {
   </section>
 
   <div class="cta-row">
-    <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank">Book Now</a>
+    <a class="btn" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank">Book Now</a>
     <a class="btn" href="https://wa.me/917906199445" target="_blank">WhatsApp</a>
     <a class="btn" href="https://www.facebook.com/share/1EctMousLf/" target="_blank">Facebook</a>
   </div>
@@ -371,42 +338,31 @@ footer {
 </footer>
 
 <script>
-/* MOBILE NAV TOGGLE */
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 
 hamburger.addEventListener('click', () => {
   const isOpen = navLinks.style.display === 'flex';
-  if (isOpen) {
-    navLinks.style.display = 'none';
-    // animate hamburger back if needed
-  } else {
-    navLinks.style.display = 'flex';
-    navLinks.style.flexDirection = 'column';
-  }
+  navLinks.style.display = isOpen ? 'none' : 'flex';
+  navLinks.style.flexDirection = 'column';
 });
 
-/* SCROLL ANIM (fade in cards) */
+/* scroll fade-in cards */
 const cards = document.querySelectorAll('.card');
 const hero = document.querySelector('.hero');
-
 function showOnScroll(){
   const trigger = window.innerHeight * 0.82;
-  if(hero.getBoundingClientRect().top < trigger){
-    hero.classList.add('visible');
-  }
+  if(hero.getBoundingClientRect().top < trigger) hero.classList.add('visible');
   cards.forEach(c=>{
-    if(c.getBoundingClientRect().top < trigger){
-      c.classList.add('visible');
-    }
+    if(c.getBoundingClientRect().top < trigger) c.classList.add('visible');
   });
 }
 window.addEventListener('scroll', showOnScroll);
 showOnScroll();
 
-/* subtle parallax on mouse (kept gentle) */
+/* subtle parallax */
 document.addEventListener('mousemove', (e) => {
-  const x = (e.clientX / window.innerWidth - 0.5) * 6; // smaller range for subtlety
+  const x = (e.clientX / window.innerWidth - 0.5) * 6;
   const y = (e.clientY / window.innerHeight - 0.5) * 6;
   document.querySelector('.bg-slider').style.backgroundPosition = `${50 + x}% ${50 + y}%`;
 });
