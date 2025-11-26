@@ -1,97 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About Us — Abeer Shine Works</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About Us — Abeer Shine Works</title>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #ffffff;
-    }
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    background: #000;
+    overflow-x: hidden;
+  }
 
-    .hero {
-      background: url('images/about-bg.jpg') no-repeat center center/cover;
-      padding: 80px 20px;
-      text-align: center;
-      background-attachment: fixed;
-    }
+  /* SPLIT BACKGROUND */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: url('images/aboutback1.jpeg') no-repeat center center/cover;
+    z-index: -2;
+  }
+  body::after {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: url('images/aboutback2.jpeg') no-repeat center center/cover;
+    z-index: -2;
+  }
 
-    .hero h1 {
-      font-size: 40px;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 10px;
-      color: #00e6e6;
-    }
+  /* OVERLAY TO IMPROVE TEXT READABILITY */
+  .overlay {
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
+  }
 
-    .hero p {
-      font-size: 18px;
-      opacity: 0.9;
-      max-width: 700px;
-      margin: auto;
-    }
+  .hero {
+    padding: 80px 20px;
+    text-align: center;
+  }
 
-    .section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 25px;
-      background: rgba(255,255,255,0.07);
-      border-radius: 15px;
-      backdrop-filter: blur(5px);
-    }
+  .hero h1 {
+    font-size: 42px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    color: #00e6e6;
+    text-shadow: 0 0 10px #00e6e6, 0 0 20px #00cccc;
+  }
 
-    h2 {
-      color: #00cccc;
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
+  .hero p {
+    font-size: 18px;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.6;
+  }
 
-    p, li {
-      font-size: 17px;
-      line-height: 1.6;
-    }
+  .section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 25px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+  }
 
-    ul {
-      margin-top: 10px;
-      padding-left: 18px;
-    }
+  h2 {
+    color: #00cccc;
+    font-size: 26px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 6px #00cccc;
+  }
 
-    .footer-btn {
-      display: block;
-      width: 160px;
-      margin: 40px auto;
-      text-align: center;
-      padding: 12px;
-      background: #00e6e6;
-      color: #000;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+  p, li {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  ul {
+    margin-top: 10px;
+    padding-left: 18px;
+  }
+
+  .footer-btn {
+    display: block;
+    width: 180px;
+    margin: 40px auto;
+    text-align: center;
+    padding: 12px;
+    background: #00e6e6;
+    color: #000;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .footer-btn:hover {
+    background: #00cccc;
+    color: #fff;
+  }
+
+  @media(max-width:800px){
+    .hero h1 { font-size: 32px; }
+    .hero p { font-size: 16px; }
+    h2 { font-size: 22px; }
+  }
+</style>
 </head>
 
 <body>
+  <div class="overlay"></div>
 
   <div class="hero">
-    <h1>About Us</h1>
+    <h1>About Abeer Shine Works</h1>
     <p>
-      Abeer Shine Works is Indore’s trusted doorstep car wash & detailing service,
-      delivering premium cleaning with professional standards — right at your home.
+      Premium doorstep car wash & detailing service in Indore. We bring professional
+      care and showroom shine directly to your home.
     </p>
   </div>
 
   <div class="section">
     <h2>Who We Are</h2>
     <p>
-      We are a modern mobile car care service, committed to providing high-quality
-      cleaning, detailing and shine restoration for all vehicle types.  
-      Our goal is simple — **give your car a showroom-like shine without you stepping out of your home**.
+      A modern mobile car care service, dedicated to delivering high-quality
+      cleaning, detailing, and polish restoration for all types of vehicles.
+      Our mission is simple — <strong>showroom-like shine without leaving your home</strong>.
     </p>
   </div>
 
@@ -99,10 +145,10 @@
     <h2>What Makes Us Different?</h2>
     <ul>
       <li>✔ Doorstep service anywhere in Indore</li>
-      <li>✔ Professional and trained car cleaning experts</li>
-      <li>✔ Premium chemicals, foam shampoo, and detailing products</li>
+      <li>✔ Professional & trained experts</li>
+      <li>✔ Premium cleaning & detailing products</li>
       <li>✔ 100% scratch-free high-pressure wash</li>
-      <li>✔ Transparent pricing & customer-first service</li>
+      <li>✔ Transparent pricing & customer-first approach</li>
       <li>✔ Quick booking through WhatsApp or call</li>
     </ul>
   </div>
@@ -110,16 +156,14 @@
   <div class="section">
     <h2>Our Mission</h2>
     <p>
-      To provide affordable, high-quality car wash & detailing services
-      with convenience, trust and professional care.
+      Providing affordable, premium car wash & detailing with convenience, trust, and professionalism.
     </p>
   </div>
 
   <div class="section">
     <h2>Our Vision</h2>
     <p>
-      To become Indore’s most reliable doorstep car care brand, known for
-      premium results, consistency and customer satisfaction.
+      To be Indore’s most reliable doorstep car care brand, recognized for consistent premium results.
     </p>
   </div>
 
