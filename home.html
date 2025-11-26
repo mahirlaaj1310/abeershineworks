@@ -17,7 +17,7 @@
     body{
       margin:0;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: #f5f6f8;
+      background: url("homeback1.jpeg") center/cover no-repeat fixed;
       color:var(--dark);
     }
 
@@ -29,19 +29,39 @@
       box-shadow: 0 4px 18px rgba(12,12,12,0.06);
       z-index:40;
     }
-    .brand{display:flex;gap:12px;align-items:center;color:var(--dark);text-decoration:none}
-    .brand .logo{
-      width:48px;height:48px;border-radius:10px;background: var(--accent);
-      display:flex;align-items:center;justify-content:center;color:var(--white);
-      font-weight:700;font-size:18px;box-shadow: 0 6px 20px rgba(0,184,184,0.14);
+    .brand{
+      display:flex;gap:18px;align-items:center;color:var(--dark);
+      text-decoration:none
     }
-    .brand h1{font-size:18px;margin:0}
+
+    /* UPDATED LOGO — BIGGER WITH IMAGE */
+    .brand .logo{
+      width:70px;height:70px;border-radius:14px;
+      background: var(--accent);
+      display:flex;align-items:center;justify-content:center;
+      overflow:hidden;
+      box-shadow: 0 6px 20px rgba(0,184,184,0.14);
+    }
+    .brand .logo img{
+      width:100%;height:100%;object-fit:cover;
+    }
+
+    /* UPDATED TITLE — 50px */
+    .brand h1{
+      font-size:50px;
+      margin:0;
+      font-weight:900;
+      font-family: "Segoe UI", Poppins, sans-serif;
+    }
+
     .nav-actions{display:flex;gap:12px}
 
     /* Hero */
     .hero{
       display:grid;grid-template-columns: 1fr 1fr;gap:28px;
       align-items:center;padding:36px;max-width:1200px;margin:26px auto;
+      background: rgba(255,255,255,0.75);border-radius:20px;
+      backdrop-filter: blur(6px);
     }
 
     /* Image stack */
@@ -57,25 +77,23 @@
       cursor:pointer;
     }
     .img-left img, .img-right img{
-      width:100%;height:100%;object-fit:cover;display:block;
-    }
+      width:100%;height:100%;object-fit:cover;display:block;}
     .img-left{ left:6%; transform:rotate(-3deg); z-index:2; }
     .img-right{ right:6%; transform:rotate(2deg); z-index:1; opacity:0.98; }
 
-    /* Overlay badge */
     .badge{
       position:absolute;left:12px;top:12px;background: rgba(0,0,0,0.55);
       color:#fff;padding:8px 12px;border-radius:999px;font-weight:700;
       font-size:13px;z-index:6;
     }
 
-    /* Text column */
+    /* Text */
     .copy{padding:8px 6px;}
     .eyebrow{color:var(--accent);font-weight:700;font-size:13px;margin-bottom:10px;}
     h2{margin:0 0 12px;font-size:34px;line-height:1.05;}
     p.lead{color:var(--muted);font-size:15px;margin:0 0 20px}
 
-    /* CTA big buttons */
+    /* CTA */
     .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
     .btn{
       display:inline-flex;align-items:center;gap:12px;padding:18px 26px;
@@ -85,18 +103,19 @@
     .btn-book{background: linear-gradient(90deg,var(--accent), #00d6d6);color:var(--white);}
     .btn-wp{background:transparent;color:var(--dark);border:2px solid rgba(0,0,0,0.08);padding:16px 20px;}
 
-    /* SERVICES */
+    /* Services */
     .services{
       margin:18px auto 60px;max-width:1200px;
       display:grid;grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
       gap:18px;padding:0 22px;
     }
     .card{
-      background:#fff;border-radius:12px;padding:22px;
-      box-shadow:0 8px 20px rgba(12,12,12,0.04);
+      background:rgba(255,255,255,0.85);
+      backdrop-filter:blur(4px);
+      border-radius:12px;padding:22px;
+      box-shadow:0 8px 20px rgba(12,12,12,0.06);
     }
 
-    /* Lightbox Popup */
     .lightbox{
       position:fixed;top:0;left:0;width:100%;height:100%;
       background:rgba(0,0,0,0.9);
@@ -117,20 +136,20 @@
 
   <header class="nav">
     <a class="brand" href="#">
-      <div class="logo">AS</div>
+      <div class="logo">
+        <img src="Image_202511261844.jpeg.png" alt="Logo">
+      </div>
       <div>
         <h1>Abeer Doorstep Car Wash</h1>
-        <div style="font-size:30px;color:var(--muted)">Car Washing & Detailing — Indore</div>
+        <div style="font-size:24px;color:var(--muted)">Car Washing & Detailing — Indore</div>
       </div>
     </a>
-    <nav>
 
     <div class="nav-actions">
       <a class="small-btn" href="services.html">Services</a>
-<a class="small-btn" href="index.html">Dashboard</a>
+      <a class="small-btn" href="index.html">Dashboard</a>
       <a class="small-btn" href="contact.html">Contact</a>
     </div>
-</nav>
   </header>
 
   <!-- HERO -->
@@ -139,7 +158,6 @@
       <div class="visual">
         <div class="badge">Home Service</div>
 
-        <!-- CLICKABLE IMAGES -->
         <div class="img-left" onclick="openLightbox('images/A_hyperrealistic_photograph_202511252330.jpeg')">
           <img src="images/A_hyperrealistic_photograph_202511252330.jpeg" alt="">
         </div>
@@ -148,6 +166,7 @@
           <img src="images/A_hyperrealistic_photograph_202511252330 (1).jpeg" alt="">
         </div>
       </div>
+
       <div class="copy">
         <div class="eyebrow">Professional • Reliable • Local</div>
         <h2>Complete Car Washing & Detailing — Exterior + Interior</h2>
@@ -155,16 +174,14 @@
 
         <div class="cta-row">
           <a class="btn btn-book" href="#booking"><span>🚗</span> Book Now</a>
-
-          <a class="btn btn-wp" href="https://wa.me/917906199445" target="_blank">
-            💬 WhatsApp: +91 7906199445
-          </a>
+          <a class="btn btn-wp" href="https://wa.me/917906199445" target="_blank">💬 WhatsApp: +91 7906199445</a>
         </div>
       </div>
     </section>
 
-    <!-- SERVICES -->
+    <!-- SERVICES + GALLERY CARD -->
     <section id="services" class="services">
+
       <div class="card">
         <div style="font-weight:700;font-size:18px;">Our Services</div>
         <ul style="padding-left:18px;color:var(--muted);line-height:1.55;">
@@ -187,6 +204,22 @@
           <li>Eco-friendly Cleaning</li>
         </ul>
       </div>
+
+      <!-- NEW GALLERY CARD -->
+      <div class="card">
+        <div style="font-weight:700;font-size:18px;margin-bottom:10px;">Gallery</div>
+        <a href="gallery.htm" style="
+          display:inline-block;
+          padding:12px 18px;
+          background:var(--accent);
+          color:white;
+          border-radius:10px;
+          text-decoration:none;
+          font-weight:700;">
+          View Gallery →
+        </a>
+      </div>
+
     </section>
   </main>
 
