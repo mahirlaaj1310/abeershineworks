@@ -34,6 +34,7 @@ body{
   animation: slide 18s infinite;
   filter: brightness(0.7);
 }
+
 @keyframes slide {
   0%   { background-image: url('images/Ultrarealistic_ferrari_car_202511260951.jpeg'); }
   25%  { background-image: url('images/back1.jpeg'); }
@@ -78,7 +79,7 @@ header{
   margin-bottom:6px;
 }
 
-/* LOGO */
+/* LOGO UPGRADE - GLOW PULSE */
 .logo{
   width:120px;
   height:120px;
@@ -103,6 +104,7 @@ header{
   object-fit:cover;
 }
 
+/* BRAND TITLE NEON EFFECT */
 .brand-title{
   font-size:32px;
   font-weight:900;
@@ -111,10 +113,63 @@ header{
     0 0 6px rgba(0,255,255,0.7),
     0 0 14px rgba(0,255,255,0.5);
 }
+
 .brand-sub{
   font-size:18px;
   font-weight:600;
   opacity:0.9;
+}
+
+/* NAVBAR */
+nav{
+  margin-top:16px;
+  position:relative;
+}
+
+nav .nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: var(--glass);
+  padding:16px;
+  border-radius:12px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 18px rgba(0,0,0,0.6);
+  position: fixed;
+  top:20px;
+  left:20px;
+  display:none;
+  z-index:999;
+}
+
+nav .nav-links a{
+  padding:8px 16px;
+  text-decoration:none;
+  font-weight:600;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.15);
+  transition:0.3s;
+}
+nav .nav-links a:hover{
+  background:var(--accent);
+}
+
+/* HAMBURGER ICON */
+nav .hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  position: fixed;
+  top:20px;
+  left:20px;
+  z-index:1000;
+}
+nav .hamburger div {
+  width: 28px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
 }
 
 /* HERO CARDS */
@@ -145,6 +200,7 @@ header{
   flex:1;
   backdrop-filter:blur(6px);
 }
+
 .card:hover{
   transform:translateY(-10px) scale(1.02);
   box-shadow:0 12px 22px rgba(0,255,255,0.3);
@@ -186,6 +242,7 @@ header{
   transform: translateY(-10px);
 }
 
+/* FLOAT ANIMATION */
 @keyframes float{
   0%{transform:translateY(0);}
   50%{transform:translateY(-10px);}
@@ -203,38 +260,12 @@ footer{
   border-top:1px solid rgba(255,255,255,0.2);
 }
 
-/* OVERLAY */
-#overlay{
-  position:fixed;
-  top:0; left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.5);
-  display:none;
-  z-index:900;
-}
-
-/* NAV MENU SLIDE */
-nav .nav-links{
-  left:-250px;
-  transition: all 0.4s ease;
-}
-nav.active .nav-links{
-  left:20px;
-}
-
-/* HAMBURGER */
-nav .hamburger{
-  top:20px; left:20px;
-  z-index:1001;
-}
 </style>
 </head>
 
 <body>
 
 <div class="bg-slider"></div>
-<div id="overlay"></div>
 
 <header>
   <div class="brand">
@@ -245,7 +276,7 @@ nav .hamburger{
     <div class="brand-sub">Indore, MP</div>
   </div>
 
-  <nav id="nav">
+  <nav>
     <div class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="home.html">More Information</a>
@@ -254,6 +285,7 @@ nav .hamburger{
       <a href="contact.html">Contact Us</a>
       <a href="interior.html">Interior</a>
     </div>
+
     <div class="hamburger" id="hamburger">
       <div></div><div></div><div></div>
     </div>
@@ -261,7 +293,9 @@ nav .hamburger{
 </header>
 
 <main class="container">
+
   <section class="hero">
+
     <a href="exterior.html" style="text-decoration:none;flex:1;">
       <div class="card">
         <div style="font-size:20px;">Exterior Wash</div>
@@ -270,6 +304,7 @@ nav .hamburger{
         </p>
       </div>
     </a>
+
     <a href="interior.html" style="text-decoration:none;flex:1;">
       <div class="card">
         <div style="font-size:20px;"><strong>Interior</strong></div>
@@ -278,19 +313,23 @@ nav .hamburger{
         </p>
       </div>
     </a>
+
   </section>
 
+  <!-- BUTTONS -->
   <div style="display:flex;justify-content:center;gap:20px;margin:40px 0;">
     <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank">Book Now</a>
     <a class="btn btn-primary" href="https://wa.me/917906199445" target="_blank">WhatsApp</a>
     <a class="btn btn-primary" href="https://www.facebook.com/share/1EctMousLf/" target="_blank">Facebook</a>
   </div>
 
+  <!-- ABOUT -->
   <section id="about" style="margin-top:60px;">
     <h2 style="cursor:pointer;" onclick="window.location.href='about.html'">About Us</h2>
     <p class="lead">Abeer Doorstep Car Wash delivers premium detailing at your home.</p>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact" style="margin-top:40px;">
     <h2 style="cursor:pointer;" onclick="window.location.href='contact.html'">Contact Us</h2>
     <p class="lead">For bookings or questions, reach us anytime.</p>
@@ -298,6 +337,7 @@ nav .hamburger{
     <p><strong>Email:</strong> <a href="mailto:abeershine2005@gmail.com">abeershine2005@gmail.com</a></p>
     <p><strong>Location:</strong> Indore, Madhya Pradesh</p>
   </section>
+
 </main>
 
 <footer>
@@ -306,29 +346,29 @@ nav .hamburger{
 </footer>
 
 <script>
+/* MOBILE NAV */
 const hamburger=document.getElementById('hamburger');
-const nav=document.getElementById('nav');
 const navLinks=document.getElementById('navLinks');
-const overlay=document.getElementById('overlay');
 
 hamburger.addEventListener('click',()=>{
-  nav.classList.toggle('active');
-  overlay.style.display = nav.classList.contains('active') ? 'block' : 'none';
-});
-
-overlay.addEventListener('click',()=>{
-  nav.classList.remove('active');
-  overlay.style.display='none';
+  navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
 });
 
 /* SCROLL ANIM */
 const cards=document.querySelectorAll('.card');
 const hero=document.querySelector('.hero');
+
 function showOnScroll(){
   const trigger = window.innerHeight * 0.85;
-  if(hero.getBoundingClientRect().top < trigger){ hero.classList.add('visible'); }
+
+  if(hero.getBoundingClientRect().top < trigger){
+    hero.classList.add('visible');
+  }
+
   cards.forEach(c=>{
-    if(c.getBoundingClientRect().top < trigger){ c.classList.add('visible'); }
+    if(c.getBoundingClientRect().top < trigger){
+      c.classList.add('visible');
+    }
   });
 }
 window.addEventListener('scroll',showOnScroll);
