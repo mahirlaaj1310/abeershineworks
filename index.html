@@ -13,11 +13,19 @@
   *{box-sizing:border-box;margin:0;padding:0;}
   body{
     font-family:Inter, Arial, sans-serif;
-    background: url('images/Ultrarealistic_ferrari_car_202511260951.jpeg') no-repeat center center fixed;
-    background-size: cover;
     color: white;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: url('images/Ultrarealistic_ferrari_car_202511260951.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    transition: background-position 0.1s ease;
+    animation: bgFloat 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes bgFloat {
+    0% { background-position: 50% 48%; }
+    50% { background-position: 50% 52%; }
+    100% { background-position: 50% 48%; }
   }
 
   h1,h2,h3,p,a,span{
@@ -42,7 +50,7 @@
     padding:18px;
   }
 
-  nav a{
+  nav .nav-links a{
     margin-left:18px;
     font-weight:600;
     text-decoration:none;
@@ -135,7 +143,6 @@
     .hero{grid-template-columns:1fr;}
   }
 
-  /* Gallery */
   .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -159,7 +166,6 @@
     transform: scale(1.05);
   }
 
-  /* Lightbox */
   .lightbox{
     position:fixed;top:0;left:0;width:100%;height:100%;
     background:rgba(0,0,0,0.9);
@@ -174,17 +180,44 @@
     font-size:40px;font-weight:700;cursor:pointer;
   }
 
-  /* Floating animation */
   @keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
   }
 
-  /* Fade-in visible class */
   .visible{
     opacity:1 !important;
     transform: translateY(0px) !important;
+  }
+
+  /* Hamburger Menu */
+  nav .nav-links { display: flex; gap: 18px; }
+  nav .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+  nav .hamburger div {
+    width: 28px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+  }
+  @media(max-width:1000px){
+    nav .nav-links {
+      display: none;
+      flex-direction: column;
+      background: var(--card);
+      position: absolute;
+      top: 60px;
+      right: 18px;
+      padding: 12px;
+      border-radius: 10px;
+      z-index: 100;
+    }
+    nav .hamburger { display: flex; }
   }
 
 </style>
@@ -201,10 +234,17 @@
       </div>
     </div>
     <nav>
-      <a href="home.html">Home</a>
-      <a href="services.html">Pricing</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <div class="nav-links" id="navLinks">
+        <a href="home.html">Home</a>
+        <a href="services.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </nav>
   </div>
 </header>
@@ -274,10 +314,8 @@
          style="font-size:22px;padding:18px 28px;">WhatsApp</a>
     </div>
   </section>
-
 </main>
 
-<!-- Lightbox -->
 <div class="lightbox" id="lightbox">
   <span class="close-btn" onclick="closeLightbox()">×</span>
   <img id="lightbox-img" src="" />
@@ -299,7 +337,6 @@ function closeLightbox(){
 // Fade-in on scroll
 const faders = document.querySelectorAll('.hero, .card, .gallery, #about, #contact');
 const appearOptions = { threshold: 0.2 };
-
 const appearOnScroll = new IntersectionObserver(function(entries, observer){
   entries.forEach(entry => {
     if(entry.isIntersecting){
@@ -308,11 +345,21 @@ const appearOnScroll = new IntersectionObserver(function(entries, observer){
     }
   });
 }, appearOptions);
+faders.forEach(fader => { appearOnScroll.observe(fader); });
 
-faders.forEach(fader => {
-  appearOnScroll.observe(fader);
+// Hamburger toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+});
+
+// Mouse movement background
+document.addEventListener('mousemove', (e) => {
+  const x = e.clientX / window.innerWidth;
+  const y = e.clientY / window.innerHeight;
+  document.body.style.backgroundPosition = `${50 + x*5}% ${50 + y*5}%`;
 });
 </script>
-
 </body>
 </html>
