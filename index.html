@@ -7,10 +7,7 @@
 <style>
   :root {
     --accent:#00b8b8;
-    --dark:#ffffff;
-    --muted:#ffffff;
-    --bg:#000000;
-    --card:rgba(17,17,17,0.8); /* slightly transparent for background image */
+    --card: rgba(17,17,17,0.8);
   }
 
   *{box-sizing:border-box;margin:0;padding:0;}
@@ -68,6 +65,9 @@
     display:grid;
     grid-template-columns:1fr 420px;
     gap:24px;
+    opacity:0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
   }
 
   h1{font-size:40px;margin-bottom:10px;}
@@ -104,8 +104,9 @@
     padding:16px;
     border-radius:14px;
     box-shadow:0 6px 14px rgba(255,255,255,0.1);
-    transition: transform 0.3s ease;
-    animation: float 4s ease-in-out infinite;
+    transition: transform 0.3s ease, opacity 0.8s ease;
+    opacity:0;
+    transform: translateY(40px);
   }
 
   .card:hover{
@@ -140,6 +141,9 @@
     flex-wrap: wrap;
     gap: 10px;
     margin-top:20px;
+    opacity:0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
   }
 
   .gallery img {
@@ -176,6 +180,13 @@
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
   }
+
+  /* Fade-in visible class */
+  .visible{
+    opacity:1 !important;
+    transform: translateY(0px) !important;
+  }
+
 </style>
 </head>
 <body>
@@ -284,6 +295,23 @@ function openLightbox(src){
 function closeLightbox(){
   document.getElementById("lightbox").style.display = "none";
 }
+
+// Fade-in on scroll
+const faders = document.querySelectorAll('.hero, .card, .gallery, #about, #contact');
+const appearOptions = { threshold: 0.2 };
+
+const appearOnScroll = new IntersectionObserver(function(entries, observer){
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
 </script>
 
 </body>
