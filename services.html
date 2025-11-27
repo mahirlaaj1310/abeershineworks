@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Abeer Shine Works — Services</title>
+<title>Abeer Doorstep Car Wash — Services</title>
 <style>
   :root {
     --accent:#00b8b8;
@@ -56,6 +56,7 @@
 
   h1{font-size:36px;margin-bottom:20px;font-weight:900;}
   .lead{font-size:16px;margin-bottom:20px;}
+
   .btn{
     padding:12px 18px;
     border-radius:10px;
@@ -70,12 +71,14 @@
     box-shadow: 0 6px 12px rgba(0,0,0,0.3);
   }
   .btn-primary{background:var(--accent);color:white;}
+
   .cards{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:14px;
     margin:20px 0;
   }
+
   .card{
     background: var(--card);
     padding:16px;
@@ -88,6 +91,7 @@
     transform: translateY(-6px);
     box-shadow: 0 12px 24px rgba(0,0,0,0.3);
   }
+
   footer{
     margin-top:30px;
     padding:20px;
@@ -97,6 +101,7 @@
     backdrop-filter: blur(6px);
     background: var(--card);
   }
+
   @media(max-width:800px){
     .cards{grid-template-columns:1fr;}
   }
@@ -110,7 +115,7 @@
     <div class="brand">
       <div class="logo">AS</div>
       <div>
-        <div style="font-weight:800;font-size:18px;">Abeer Shine Works</div>
+        <div style="font-weight:800;font-size:18px;">Abeer Doorstep Car Wash</div>
         <div style="font-size:13px;">Indore, MP</div>
       </div>
     </div>
@@ -126,25 +131,48 @@
 </header>
 
 <main class="container">
+
   <!-- Hero Section -->
   <section class="hero">
-    <h1>Abeer Shine Works — Our Services</h1>
-    <p class="lead">Premium car washing & detailing service in Indore, Madhya Pradesh.</p>
+    <h1>Our Services</h1>
+    <p class="lead">Premium Car Washing & Detailing Service in Indore.</p>
     <a class="btn btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank">Book Now</a>
   </section>
 
-  <!-- Services Cards -->
-  <div class="cards" id="service-cards">
-    <!-- Cards will load here from CSV -->
+  <!-- Price Cards Section -->
+  <div class="cards">
+
+    <!-- CAR PRICING -->
+    <div class="card"><b>Interior Vacuum & Dash</b><br>Hatchback: ₹99<br>Sedan: ₹119<br>Medium SUV: ₹149<br>Full SUV: ₹199</div>
+
+    <div class="card"><b>Regular Exterior Ceramic Wash</b><br>Hatchback: ₹199<br>Sedan: ₹249<br>Medium SUV: ₹299<br>Full SUV: ₹349</div>
+
+    <div class="card"><b>Ceramic Interior + Exterior Wash</b><br>Hatchback: ₹249<br>Sedan: ₹299<br>Medium SUV: ₹349<br>Full SUV: ₹499</div>
+
+    <div class="card"><b>Foam Wash + Interior Vacuum</b><br>Hatchback: ₹299<br>Sedan: ₹349<br>Medium SUV: ₹399<br>Full SUV: ₹449</div>
+
+    <div class="card"><b>Deep Cleaning + Foam Wash</b><br>Hatchback: ₹499<br>Sedan: ₹599<br>Medium SUV: ₹699<br>Full SUV: ₹899</div>
+
+    <div class="card"><b>Premium Spa (Shampoo + Polish)</b><br>Hatchback: ₹699<br>Sedan: ₹799<br>Medium SUV: ₹899<br>Full SUV: ₹999</div>
+
+    <!-- MONTHLY -->
+    <div class="card"><b>Monthly Package</b><br>Hatchback: ₹1000<br>Sedan: ₹1250<br>Medium SUV: ₹1500<br>Full SUV: ₹2000</div>
+
+    <!-- BIKE -->
+    <div class="card"><b>Normal Bike Ceramic Wash</b><br>₹99</div>
+
+    <div class="card"><b>Premium Bike Ceramic Wash</b><br>₹149</div>
+
   </div>
+
 </main>
 
 <footer>
-  © <script>document.write(new Date().getFullYear());</script> Abeer Shine Works — All Rights Reserved.
+  © <script>document.write(new Date().getFullYear());</script> Abeer Doorstep Car Wash — All Rights Reserved.
 </footer>
 
 <script>
-// Random background images
+// Same background slideshow — untouched
 const bgImages = [
   'images/Ultrarealistic_ferrari_car_202511260951.jpeg',
   'images/back1.jpeg',
@@ -153,7 +181,6 @@ const bgImages = [
   'images/back4.jpeg'
 ];
 
-// Change background every 3 seconds
 let bgIndex = 0;
 function changeBackground() {
   document.body.style.backgroundImage = `url('${bgImages[bgIndex]}')`;
@@ -161,27 +188,6 @@ function changeBackground() {
 }
 changeBackground();
 setInterval(changeBackground, 3000);
-
-// Load services from CSV with safe parsing
-fetch('services.csv')
-  .then(response => response.text())
-  .then(data => {
-    const rows = data.split('\n').slice(1); // skip header
-    const container = document.getElementById('service-cards');
-    rows.forEach(row => {
-      if(row.trim() === '') return;
-      const cols = row.split(',').map(c => c.trim());
-      const service = cols[0] || '';
-      const price = cols[1] || '';
-      if(service === '' || price === '') return;
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `<div style="font-weight:700; font-size:18px;">${service}</div>
-                        <div style="margin-top:8px; font-size:16px;">₹${price}</div>`;
-      container.appendChild(card);
-    });
-  })
-  .catch(err => console.error('Error loading services:', err));
 </script>
 
 </body>
