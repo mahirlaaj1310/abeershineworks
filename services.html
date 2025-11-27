@@ -56,16 +56,17 @@ nav .nav-links a{
   margin-bottom:20px;
 }
 
-/* Fixed video top-left - aligned with top border */
+/* Fixed video top-left - circular logo style */
 .brand-logo{
-  width:150px;        /* size adjust */
-  height:auto;
+  width:120px;        /* circular size */
+  height:120px;       /* width = height for perfect circle */
   position:fixed;
-  top:10px;           /* top aligned with header */
+  top:10px;           
   left:20px;
   z-index:100;
-  border-radius:12px; /* thoda rounded corners */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* optional depth */
+  border-radius:50%;   /* perfect circle */
+  object-fit:cover;    /* video fills circle properly */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 h1{font-size:32px;margin-bottom:20px;font-weight:900;text-align:center;}
@@ -151,7 +152,7 @@ footer{
 
 <div class="brand-top">
   <div class="brand-title">Abeer Doorstep Car Wash</div>
-  <!-- Video embedded in place of spinning logo -->
+  <!-- Circular video embedded in place of spinning logo -->
   <video class="brand-logo" autoplay muted loop playsinline>
     <source src="videos/logovid.mp4" type="video/mp4">
     Your browser does not support the video tag.
