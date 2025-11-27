@@ -46,6 +46,7 @@
   .brand-top{
     text-align:center;
     margin-top:20px;
+    position: relative;
   }
 
   .brand-title{
@@ -54,11 +55,30 @@
     letter-spacing:1px;
   }
 
+  /* Updated logo */
   .brand-logo{
-    width:120px;
+    width:200px; /* size bada kiya */
     height:auto;
     margin-top:10px;
-    border-radius:12px;
+    border-radius:0; /* black background remove */
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%) rotateY(0deg);
+    cursor:grab;
+    transform-style: preserve-3d;
+    animation: spin 5s linear infinite;
+    transition: transform 0.2s;
+  }
+
+  .brand-logo:active {
+    cursor: grabbing;
+    animation-play-state: paused;
+  }
+
+  @keyframes spin {
+    0% { transform: translate(-50%, -50%) rotateY(0deg); }
+    100% { transform: translate(-50%, -50%) rotateY(360deg); }
   }
 
   h1{font-size:32px;margin-bottom:20px;font-weight:900;text-align:center;}
@@ -123,6 +143,7 @@
     table {font-size: 13px;}
     th,td{padding:8px;}
     .brand-title{font-size:28px;}
+    .brand-logo{width:150px;}
   }
 </style>
 </head>
@@ -144,8 +165,8 @@
 
 <div class="brand-top">
   <div class="brand-title">Abeer Doorstep Car Wash</div>
-  <!-- Yaha apni logo image ka naam daal dena -->
-  <img src="images/Image_202511261844.jpeg.png" alt="Logo" class="brand-logo">
+  <!-- Logo movable aur spinning -->
+  <img src="images/Image_202511261844.jpeg.png" alt="Logo" class="brand-logo" id="logo">
 </div>
 
 <main class="container">
@@ -193,7 +214,7 @@
 </footer>
 
 <script>
-// Background slideshow same as before
+// Background slideshow
 const bgImages = [
   'images/Ultrarealistic_ferrari_car_202511260951.jpeg',
   'images/back1.jpeg',
@@ -208,6 +229,55 @@ function changeBackground() {
 }
 changeBackground();
 setInterval(changeBackground, 3000);
+
+// Logo draggable
+const logo = document.getElementById('logo');
+let offsetX=0, offsetY=0, isDragging=false;
+
+logo.addEventListener('mousedown', e=>{
+  isDragging=true;
+  offsetX = e.clientX - logo.offsetLeft;
+  offsetY = e.clientY - logo.offsetTop;
+});
+
+document.addEventListener('mousemove', e=>{
+  if(isDragging){
+    let x=e.clientX - offsetX;
+    let y=e.clientY - offsetY;
+    x=Math.max(0, Math.min(window.innerWidth - logo.offsetWidth, x));
+    y=Math.max(0, Math.min(window.innerHeight - logo.offsetHeight, y));
+    logo.style.left=x+'px';
+    logo.style.top=y+'px';
+  }
+});
+
+document.addEventListener('mouseup', e=>{
+  isDragging=false;
+});
+
+// For touch devices
+logo.addEventListener('touchstart', e=>{
+  isDragging=true;
+  const touch=e.touches[0];
+  offsetX = touch.clientX - logo.offsetLeft;
+  offsetY = touch.clientY - logo.offsetTop;
+});
+
+document.addEventListener('touchmove', e=>{
+  if(isDragging){
+    const touch=e.touches[0];
+    let x=touch.clientX - offsetX;
+    let y=touch.clientY - offsetY;
+    x=Math.max(0, Math.min(window.innerWidth - logo.offsetWidth, x));
+    y=Math.max(0, Math.min(window.innerHeight - logo.offsetHeight, y));
+    logo.style.left=x+'px';
+    logo.style.top=y+'px';
+  }
+});
+
+document.addEventListener('touchend', e=>{
+  isDragging=false;
+});
 </script>
 
 </body>
