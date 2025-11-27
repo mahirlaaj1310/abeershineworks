@@ -43,19 +43,42 @@
     color:white;
   }
 
-  .brand{display:flex;align-items:center;gap:12px;}
-  .logo{
-    width:52px;height:52px;
-    background:linear-gradient(135deg,#00b8b8,#4f46e5);
-    color:#fff;
-    font-weight:900;
-    border-radius:12px;
-    display:flex;align-items:center;justify-content:center;
-    font-size:18px;
+  .brand-top{
+    text-align:center;
+    margin-top:20px;
   }
 
-  h1{font-size:36px;margin-bottom:20px;font-weight:900;text-align:center;}
+  .brand-title{
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:1px;
+  }
+
+  .brand-logo{
+    width:120px;
+    height:auto;
+    margin-top:10px;
+    border-radius:12px;
+  }
+
+  h1{font-size:32px;margin-bottom:20px;font-weight:900;text-align:center;}
   .lead{text-align:center;font-size:16px;margin-bottom:20px;}
+
+  .btn-primary{
+    padding:12px 18px;
+    border-radius:10px;
+    background:var(--accent);
+    color:white;
+    font-weight:700;
+    text-decoration:none;
+    display:inline-block;
+    margin:10px auto;
+    transition:0.3s;
+  }
+  .btn-primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 6px 12px rgba(0,0,0,0.3);
+  }
 
   table {
     width: 100%;
@@ -99,6 +122,7 @@
   @media(max-width:700px){
     table {font-size: 13px;}
     th,td{padding:8px;}
+    .brand-title{font-size:28px;}
   }
 </style>
 </head>
@@ -107,13 +131,7 @@
 
 <header>
   <div class="container" style="display:flex;align-items:center;justify-content:space-between;">
-    <div class="brand">
-      <div class="logo">AS</div>
-      <div>
-        <div style="font-weight:800;font-size:18px;">Abeer Doorstep Car Wash</div>
-        <div style="font-size:13px;">Indore, MP</div>
-      </div>
-    </div>
+    <div></div>
     <nav>
       <div class="nav-links">
         <a href="index.html">Home</a>
@@ -124,10 +142,20 @@
   </div>
 </header>
 
+<div class="brand-top">
+  <div class="brand-title">Abeer Doorstep Car Wash</div>
+  <!-- Yaha apni logo image ka naam daal dena -->
+  <img src="images/logo.png" alt="Logo" class="brand-logo">
+</div>
+
 <main class="container">
 
   <h1>Our Services & Price List</h1>
   <p class="lead">Premium Car Washing & Detailing Service in Indore</p>
+
+  <div style="text-align:center;">
+    <a class="btn-primary" href="https://forms.gle/88uU1KJMDp8rchrJ9" target="_blank">Book Now</a>
+  </div>
 
   <table>
     <tr>
@@ -148,6 +176,7 @@
   </table>
 
   <h1 style="margin-top:40px;">Bike Wash</h1>
+
   <table>
     <tr>
       <th>Service Name</th>
