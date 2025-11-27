@@ -56,7 +56,7 @@ nav .nav-links a{
   margin-bottom:20px;
 }
 
-/* Fixed spinning logo top-left */
+/* Fixed video top-left */
 .brand-logo{
   width:150px; /* size adjust */
   height:auto;
@@ -64,13 +64,6 @@ nav .nav-links a{
   top:20px;
   left:20px;
   z-index:100;
-  transform-style: preserve-3d;
-  animation: spin 5s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(360deg); }
 }
 
 h1{font-size:32px;margin-bottom:20px;font-weight:900;text-align:center;}
@@ -156,7 +149,11 @@ footer{
 
 <div class="brand-top">
   <div class="brand-title">Abeer Doorstep Car Wash</div>
-  <img src="images/Image_202511261844.jpeg.png" alt="Logo" class="brand-logo">
+  <!-- Video embedded in place of spinning logo -->
+  <video class="brand-logo" autoplay muted loop playsinline>
+    <source src="videos/logovid.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </div>
 
 <main class="container">
