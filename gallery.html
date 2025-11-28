@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Gallery — Abeer Shine Works</title>
+<title>Gallery — Abeer Doorstep Car Wash</title>
 <style>
   :root {
     --accent:#00b8b8;
@@ -31,14 +31,11 @@
     align-items:center;
   }
 
-  .logo{
-    width:52px;height:52px;
-    background:linear-gradient(135deg,#00b8b8,#4f46e5);
-    color:#fff;
-    font-weight:900;
-    border-radius:12px;
-    display:flex;align-items:center;justify-content:center;
-    font-size:18px;
+  .logo img{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    object-fit:cover;
   }
 
   nav a{
@@ -103,22 +100,42 @@
     backdrop-filter: blur(6px);
     background: var(--card);
   }
+
+  .video-btn {
+    display: inline-block;
+    padding: 10px 22px;
+    background: #00e6e6;
+    color: #000;
+    font-weight: bold;
+    border-radius: 14px;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 15px 0;
+    box-shadow: 0 0 10px #00e6e6;
+    transition: 0.3s ease-in-out;
+  }
+
+  .video-btn:hover {
+    background: #00c7c7;
+    box-shadow: 0 0 14px #00e6e6;
+  }
 </style>
 </head>
 
 <body>
 <header>
-  <div class="logo">AS</div>
+  <div class="logo">
+    <img src="images/logo.png" alt="Abeer Doorstep Car Wash">
+  </div>
   <nav>
     <a href="index.html">Home</a>
     <a href="services.html">Pricing</a>
     <a href="about.html">About</a>
-
     <a href="contact.html">Contact</a>
   </nav>
 </header>
 
-<h1>Gallery — Abeer Shine Works</h1>
+<h1>Gallery — Abeer Doorstep Car Wash</h1>
 
 <div class="gallery">
   <img src="images/A_white_maruti_202511251250.jpeg" onclick="openLightbox(this.src)">
@@ -136,31 +153,11 @@
   <span class="close-btn" onclick="closeLightbox()">×</span>
   <img id="lightbox-img" src="" />
 </div>
+
 <a href="video.html" class="video-btn">🎥 Videos</a>
 
-<style>
-.video-btn {
-  display: inline-block;
-  padding: 10px 22px;
-  background: #00e6e6;
-  color: #000;
-  font-weight: bold;
-  border-radius: 14px;
-  font-size: 18px;
-  text-decoration: none;
-  margin: 15px 0;
-  box-shadow: 0 0 10px #00e6e6;
-  transition: 0.3s ease-in-out;
-}
-
-.video-btn:hover {
-  background: #00c7c7;
-  box-shadow: 0 0 14px #00e6e6;
-}
-</style>
-
 <footer>
-  © <script>document.write(new Date().getFullYear());</script> Abeer Shine Works — All Rights Reserved.
+  © <script>document.write(new Date().getFullYear());</script> Abeer Doorstep Car Wash — All Rights Reserved.
 </footer>
 
 <script>
