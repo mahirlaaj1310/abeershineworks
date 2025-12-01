@@ -366,6 +366,53 @@ footer { margin-top:36px; padding:18px; text-align:center; font-size:13px; color
 <div style="text-align:center; margin-top:20px;">
   <a class="btn btn-wp" href="review.html">⭐ Give Review</a>
 </div>
+<!-- REVIEWS SECTION -->
+<section id="reviews" style="margin-top:40px; padding:20px; background: rgba(0,0,0,0.6); border-radius:12px; border:2px solid #00b8b8;">
+  <h2 style="text-align:center; margin-bottom:20px;">⭐ Customer Reviews</h2>
+  <div id="reviews-container" style="display:flex; flex-direction:column; gap:16px;"></div>
+</section>
+
+<script type="module">
+  import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA75fT3IbxJits64CnYXJeCu7fuCtaBRDQ",
+    authDomain: "abeerreview.firebaseapp.com",
+    projectId: "abeerreview",
+    storageBucket: "abeerreview.firebasestorage.app",
+    messagingSenderId: "522224848214",
+    appId: "1:522224848214:web:eac23b8653099d70361af7",
+    measurementId: "G-JFD5W7NR4V"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const reviewsContainer = document.getElementById('reviews-container');
+
+  async function loadReviews() {
+    const q = query(collection(db, "reviews"), orderBy("timestamp", "desc"));
+    const querySnapshot = await getDocs(q);
+    reviewsContainer.innerHTML = "";
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      const stars = "★".repeat(data.rating) + "☆".repeat(5 - data.rating);
+      const reviewCard = document.createElement('div');
+      reviewCard.style.background = "rgba(255,255,255,0.05)";
+      reviewCard.style.padding = "12px";
+      reviewCard.style.borderRadius = "8px";
+      reviewCard.style.boxShadow = "0 4px 12px rgba(0,0,0,0.4)";
+      reviewCard.innerHTML = `
+        <strong>${data.name}</strong> <span style="color:#FFD700">${stars}</span>
+        <p style="margin-top:6px; color:#ddd">${data.message}</p>
+      `;
+      reviewsContainer.appendChild(reviewCard);
+    });
+  }
+
+  loadReviews();
+</script>
 <footer>
   © <script>document.write(new Date().getFullYear());</script> Abeer Doorstep Car Wash — All Rights Reserved.
 </footer>
