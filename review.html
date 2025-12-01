@@ -1,135 +1,93 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Abeer Reviews</title>
-
-<style>
-  body{
-    font-family: Arial;
-    background:#f5f5f5;
-    padding:20px;
-  }
-  .box{
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.1);
-    max-width:600px;
-    margin:auto;
-  }
-  input, textarea {
-    width:100%;
-    padding:10px;
-    margin-top:10px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    font-size:16px;
-  }
-  button{
-    margin-top:15px;
-    padding:12px 20px;
-    background:#00b8b8;
-    border:none;
-    border-radius:8px;
-    color:white;
-    font-size:17px;
-    font-weight:700;
-    cursor:pointer;
-  }
-  .review{
-    background:white;
-    padding:16px;
-    border-radius:12px;
-    margin-top:12px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
-  }
-  .delete-btn{
-    color:red;
-    cursor:pointer;
-    font-size:14px;
-    float:right;
-  }
-</style>
-</head>
-
-<body>
-
-<div class="box">
-  <h2>Leave a Review ⭐</h2>
-
-  <input id="name" placeholder="Your Name" />
-  <textarea id="comment" rows="4" placeholder="Write your review..."></textarea>
-
-  <button onclick="submitReview()">Submit Review</button>
-</div>
-
-<h2 style="text-align:center;margin-top:30px;">Customer Reviews</h2>
-<div id="reviews"></div>
-
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } 
-  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyA75fT3IbxJits64CnYXJeCu7fuCtaBRDQ",
-    authDomain: "abeerreview.firebaseapp.com",
-    projectId: "abeerreview",
-    storageBucket: "abeerreview.firebasestorage.app",
-    messagingSenderId: "522224848214",
-    appId: "1:522224848214:web:eac23b8653099d70361af7",
-    measurementId: "G-JFD5W7NR4V"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  async function submitReview(){
-    let name = document.getElementById("name").value;
-    let comment = document.getElementById("comment").value;
-
-    if(!name || !comment){
-      alert("Please fill all fields");
-      return;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Give Review - Abeer Doorstep Car Wash</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#111; color:#fff; padding:20px; }
+    h1 { text-align:center; margin-bottom:20px; }
+    form { max-width:500px; margin:0 auto; background: rgba(255,255,255,0.05); padding:20px; border-radius:12px; }
+    input, textarea, button { width:100%; margin-bottom:12px; padding:10px; border-radius:8px; border:none; }
+    textarea { resize:none; height:100px; }
+    button { background:#00b8b8; color:#fff; font-weight:700; cursor:pointer; transition:0.3s; }
+    button:hover { background:#00d6d6; }
+    .stars { display:flex; justify-content:space-between; max-width:200px; margin:0 auto 12px; }
+    .stars input { display:none; }
+    .stars label {
+      font-size:32px;
+      cursor:pointer;
+      color: #555;
+      transition: color 0.2s;
     }
+    .stars input:checked ~ label,
+    .stars label:hover,
+    .stars label:hover ~ label {
+      color: #ffd700;
+    }
+  </style>
+</head>
+<body>
+  <h1>⭐ Give Your Review</h1>
 
-    await addDoc(collection(db, "reviews"), {
-      name:name,
-      comment:comment,
-      time: Date.now()
+  <form id="reviewForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    
+    <div class="stars">
+      <input type="radio" name="rating" id="star5" value="5"><label for="star5">★</label>
+      <input type="radio" name="rating" id="star4" value="4"><label for="star4">★</label>
+      <input type="radio" name="rating" id="star3" value="3"><label for="star3">★</label>
+      <input type="radio" name="rating" id="star2" value="2"><label for="star2">★</label>
+      <input type="radio" name="rating" id="star1" value="1"><label for="star1">★</label>
+    </div>
+
+    <textarea id="message" placeholder="Write your review..." required></textarea>
+    <button type="submit">Post Review</button>
+  </form>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.1/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.6.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA75fT3IbxJits64CnYXJeCu7fuCtaBRDQ",
+      authDomain: "abeerreview.firebaseapp.com",
+      projectId: "abeerreview",
+      storageBucket: "abeerreview.appspot.com",
+      messagingSenderId: "522224848214",
+      appId: "1:522224848214:web:eac23b8653099d70361af7"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const form = document.getElementById("reviewForm");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const message = document.getElementById("message").value;
+      const rating = document.querySelector('input[name="rating"]:checked')?.value;
+
+      if(!rating){
+        alert("Please select a star rating!");
+        return;
+      }
+
+      try {
+        await addDoc(collection(db, "reviews"), {
+          name,
+          rating: Number(rating),
+          message,
+          timestamp: new Date()
+        });
+        alert("Review posted successfully!");
+        form.reset();
+      } catch(err){
+        console.error(err);
+        alert("Error posting review.");
+      }
     });
-
-    alert("Review submitted!");
-    location.reload();
-  }
-
-  async function loadReviews(){
-    let list = document.getElementById("reviews");
-    const querySnapshot = await getDocs(collection(db, "reviews"));
-
-    querySnapshot.forEach((docu) => {
-      let data = docu.data();
-
-      let div = document.createElement("div");
-      div.className = "review";
-      div.innerHTML = `
-        <b>${data.name}</b>  
-        <span class="delete-btn" onclick="deleteReview('${docu.id}')">Delete</span>
-        <p>${data.comment}</p>
-      `;
-      list.appendChild(div);
-    });
-  }
-  loadReviews();
-
-  window.deleteReview = async function(id){
-    await deleteDoc(doc(db, "reviews", id));
-    alert("Review deleted");
-    location.reload();
-  }
-</script>
-
+  </script>
 </body>
 </html>
