@@ -5,300 +5,406 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Abeer Shine Works — Home</title>
 
-  <style>
-  :root{
-    --accent:#00b8b8;
-    --dark:#0b0b0b;
-    --muted:#6b6b6b;
-    --white:#ffffff;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{
-    font-family: Inter, system-ui;
-    overflow-x:hidden;
-    position:relative;
-    color:var(--dark);
-  }
+<style>
 
-  /* BACKGROUND SLIDESHOW */
-  .bg-slide{
-    position:fixed;
-    top:0;left:0;
-    width:100%;height:100%;
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-    z-index:-1;
-    transition: opacity 1.6s ease-in-out;
-    opacity:0;
-  }
-  .bg-slide.active{opacity:1;}
+:root{
+  --accent:#00b8b8;
+  --dark:#0b0b0b;
+  --muted:#6b6b6b;
+  --white:#ffffff;
+}
 
-  /* NAV */
-  .nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:15px 16px;position:sticky;top:0;
-    background: rgba(255,255,255,0.88);backdrop-filter: blur(6px);
-    box-shadow: 0 4px 18px rgba(12,12,12,0.06);
-    z-index:40;
-  }
-  .brand{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--dark)}
-  .brand .logo{width:58px;height:58px;border-radius:14px;overflow:hidden;}
-  .brand h1{font-size:32px;margin:0;font-weight:900}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:Inter,system-ui;
+  overflow-x:hidden;
+  background:#fff;
+  color:var(--dark);
+}
 
-  .nav-actions a{
+/* =======================
+   BACKGROUND SLIDESHOW
+======================= */
+.bg-slide{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background-size:cover;
+  background-position:center;
+  z-index:-1;
+  opacity:0;
+  transition:opacity 1.5s ease-in-out;
+}
+.bg-slide.active{opacity:1;}
+
+/* =======================
+   NAVBAR PREMIUM
+======================= */
+.nav{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 18px;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #eaeaea;
+  position:sticky;
+  top:0;
+  z-index:9999;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:16px;
   text-decoration:none;
-  font-weight:900;               /* <-- Bold */
-  padding:8px 12px;
-  border-radius:10px;
-  border:2px solid #00b8b8;      /* <-- Blue outline */
-  background:rgba(0,0,0,0.03);
   color:#000;
-  transition:0.3s;
+}
+
+.brand .logo{
+  width:70px;
+  height:70px;
+  border-radius:16px;
+  overflow:hidden;
+  flex-shrink:0;
+}
+
+.brand .logo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.brand h1{
+  font-size:28px;
+  font-weight:900;
+  margin-bottom:4px;
+}
+
+.nav-actions{
+  display:flex;
+  gap:12px;
+  flex-shrink:0;
+}
+
+.nav-actions a{
+  padding:8px 14px;
+  border-radius:12px;
+  font-weight:900;
+  text-decoration:none;
+  border:2px solid var(--accent);
+  background:rgba(0,0,0,0.04);
+  color:#000;
+  transition:0.3s ease;
 }
 
 .nav-actions a:hover{
   background:var(--accent);
-  color:white;
-  border-color:var(--accent);
+  color:#fff;
+  box-shadow:0 0 10px rgba(0,184,184,0.6);
 }
 
-  /* HERO */
-  .hero{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap:28px;
-    align-items:center;
-    padding:26px;
-    max-width:1200px;
-    margin:40px auto;
-    background: rgba(255,255,255,0.75);
-    border-radius:20px;
-    backdrop-filter: blur(6px);
+/* MOBILE NAVBAR */
+@media(max-width:768px){
+  .nav{
+    flex-direction:column;
+    gap:14px;
+    padding:12px;
   }
 
-  .visual{
-    position:relative;min-height:340px;border-radius:18px;overflow:hidden;
-    background:#e8ffff;box-shadow: 0 12px 40px rgba(0,0,0,0.08);
-  }
-  .img-left,.img-right{
-    position:absolute; top:8%; width:70%; height:82%;
-    border-radius:14px; overflow:hidden;
-    box-shadow:0 12px 30px rgba(0,0,0,0.18);
-  }
-  .img-left{left:4%; transform:rotate(-3deg); z-index:2;}
-  .img-right{right:4%; transform:rotate(2deg); z-index:1;}
-  .img-left img,.img-right img{width:100%;height:100%;object-fit:cover;}
-
-  .badge{
-    position:absolute;left:12px;top:12px;
-    background:black;color:#fff;font-weight:700;
-    padding:8px 12px;border-radius:999px;font-size:13px;
+  .brand .logo{
+    width:60px;
+    height:60px;
   }
 
-  .copy{padding:10px;}
-  .eyebrow{color:var(--accent);font-size:15px;font-weight:700;margin-bottom:8px}
-  h2{margin:0 0 12px;font-size:30px}
-  .lead{color:var(--muted);margin-bottom:20px;font-size:16px}
-
-  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
-  .btn{
-    padding:14px 22px;border-radius:14px;
-    font-weight:800;font-size:16px;text-decoration:none;
-    display:inline-flex;align-items:center;gap:10px;
-    box-shadow:0 10px 26px rgba(0,0,0,0.08);
-    transition:0.3s;
-  }
-  .btn-book{background:var(--accent);color:white}
-  .btn-book:hover{background:#00d6d6}
-  .btn-wp{background:white;border:2px solid #ddd;color:#000}
-  .btn-wp:hover{border-color:var(--accent);color:var(--accent)}
-
-  /* SERVICES */
-  .services{
-    max-width:1200px;margin:30px auto 60px;
-    display:grid;grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-    gap:18px;padding:0 22px;
-  }
-  .card{
-    background:rgba(255,255,255,0.85);
-    padding:22px;border-radius:12px;
-    backdrop-filter:blur(4px);
-    box-shadow:0 8px 20px rgba(12,12,12,0.06);
+  .brand h1{
+    font-size:22px;
   }
 
-  /* LIGHTBOX */
-  .lightbox{
-    position:fixed;top:0;left:0;width:100%;height:100%;
-    background:rgba(0,0,0,0.9);
-    display:none;justify-content:center;align-items:center;
-    z-index:9999;
-  }
-  .lightbox img{max-width:90%;max-height:90%;border-radius:12px}
-  .close-btn{
-    position:absolute;top:20px;right:28px;font-size:40px;
-    color:white;cursor:pointer;font-weight:700;
+  .nav-actions{
+    flex-wrap:wrap;
+    justify-content:center;
+    width:100%;
   }
 
-  /* MOBILE RESPONSIVE FIXES */
-  @media(max-width:768px){
   .nav-actions a{
-    padding:6px 10px;
+    padding:7px 10px;
     font-size:13px;
-    font-weight:900;
-    border:2px solid #00b8b8;   /* mobile par bhi outline */
   }
 }
-    .nav-actions a{
-      padding:6px 10px;font-size:13px;
-    }
 
-    .hero{
-      grid-template-columns:1fr;
-      padding:18px;
-      margin:20px;
-    }
+/* =======================
+   HERO SECTION
+======================= */
+.hero{
+  max-width:1200px;
+  margin:40px auto;
+  padding:26px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:26px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(8px);
+}
 
-    .visual{
-      min-height:260px;
-    }
+.visual{
+  position:relative;
+  min-height:340px;
+  background:#eaffff;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(0,0,0,0.1);
+}
 
-    .img-left,.img-right{
-      width:84%;
-      height:80%;
-      top:10%;
-    }
-    .img-left{left:8%; transform:rotate(-2deg);}
-    .img-right{right:8%; transform:rotate(2deg);}
+.badge{
+  position:absolute;
+  top:12px;left:12px;
+  padding:8px 14px;
+  border-radius:20px;
+  background:black;color:white;
+  font-size:13px;font-weight:700;
+}
 
-    h2{font-size:24px}
-    .lead{font-size:14px}
+.img-left,.img-right{
+  position:absolute;
+  width:75%;height:80%;
+  border-radius:14px;
+  overflow:hidden;
+  top:10%;
+  box-shadow:0 12px 25px rgba(0,0,0,0.25);
+}
 
-    .btn{
-      width:100%;justify-content:center;
-    }
+.img-left{left:6%;transform:rotate(-3deg);z-index:2;}
+.img-right{right:6%;transform:rotate(3deg);z-index:1;}
+
+.img-left img,.img-right img{
+  width:100%;height:100%;object-fit:cover;
+}
+
+.copy{padding:10px;}
+.eyebrow{color:var(--accent);font-weight:700;margin-bottom:8px;}
+h2{font-size:30px;margin-bottom:12px;}
+.lead{font-size:16px;color:var(--muted);margin-bottom:20px;}
+
+.cta-row{
+  display:flex;gap:14px;flex-wrap:wrap;
+}
+
+.btn{
+  padding:14px 22px;
+  font-weight:800;
+  border-radius:14px;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.btn-book{background:var(--accent);color:white;}
+.btn-book:hover{background:#01dcdc;}
+
+.btn-wp{
+  border:2px solid #ddd;
+  background:white;
+  color:#000;
+}
+.btn-wp:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* MOBILE HERO */
+@media(max-width:768px){
+  .hero{
+    grid-template-columns:1fr;
+    margin:20px;
+    padding:18px;
   }
+
+  .img-left,.img-right{
+    width:85%;
+    height:80%;
+  }
+
+  h2{font-size:24px;}
+  .lead{font-size:14px;}
+
+  .btn{width:100%;justify-content:center;}
+}
+
+/* =======================
+   SERVICES
+======================= */
+.services{
+  max-width:1200px;
+  margin:40px auto;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:rgba(255,255,255,0.85);
+  padding:22px;
+  border-radius:14px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.08);
+  backdrop-filter:blur(6px);
+}
+
+/* =======================
+   LIGHTBOX
+======================= */
+.lightbox{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+}
+
+.lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:14px;
+}
+
+.close-btn{
+  position:absolute;
+  top:20px;right:28px;
+  font-size:40px;
+  color:white;
+  cursor:pointer;
+  font-weight:bold;
+}
 
 </style>
+
 </head>
 
 <body>
 
-  <!-- SLIDESHOW BACKGROUND IMAGES -->
-  <div class="bg-slide active" style="background-image:url('images/homeback1.jpeg')"></div>
-  <div class="bg-slide" style="background-image:url('images/homeback2.jpeg')"></div>
-  <div class="bg-slide" style="background-image:url('images/homeback3.jpeg')"></div>
-  <div class="bg-slide" style="background-image:url('images/homeback4.jpeg')"></div>
+<!-- BACKGROUND SLIDES -->
+<div class="bg-slide active" style="background-image:url('images/homeback1.jpeg')"></div>
+<div class="bg-slide" style="background-image:url('images/homeback2.jpeg')"></div>
+<div class="bg-slide" style="background-image:url('images/homeback3.jpeg')"></div>
+<div class="bg-slide" style="background-image:url('images/homeback4.jpeg')"></div>
 
-  <!-- NAV BAR -->
-  <header class="nav">
-    <a class="brand" href="#">
-      <div class="logo">
-        <img src="images/Image_202511261844.jpeg.png" alt="">
-      </div>
-      <div>
-        <h1>Abeer Doorstep Car Wash</h1>
-        <div style="font-size:22px;color:var(--muted)">Car Washing & Detailing — Indore</div>
-      </div>
-    </a>
-
-    <div class="nav-actions">
-      <a href="services.html">Services</a>
-      <a href="index.html">Dashboard</a>
-      <a href="contact.html">Contact</a>
-      <a href="gallery.html">Gallery</a>
+<!-- NAVBAR -->
+<header class="nav">
+  <a class="brand" href="#">
+    <div class="logo">
+      <img src="images/Image_202511261844.jpeg.png" />
     </div>
-  </header>
+    <div>
+      <h1>Abeer Doorstep Car Wash</h1>
+      <div style="font-size:22px;color:var(--muted)">Car Washing & Detailing — Indore</div>
+    </div>
+  </a>
 
-  <!-- HERO -->
-  <main>
-    <section class="hero">
-      <div class="visual">
-        <div class="badge">Home Service</div>
+  <div class="nav-actions">
+    <a href="services.html">Services</a>
+    <a href="index.html">Dashboard</a>
+    <a href="contact.html">Contact</a>
+    <a href="gallery.html">Gallery</a>
+  </div>
+</header>
 
-        <div class="img-left" onclick="openLightbox('images/A_hyperrealistic_photograph_202511252330.jpeg')">
-          <img src="images/A_hyperrealistic_photograph_202511252330.jpeg" />
-        </div>
+<!-- HERO -->
+<main>
 
-        <div class="img-right" onclick="openLightbox('images/A_hyperrealistic_photograph_202511252330 (1).jpeg')">
-          <img src="images/A_hyperrealistic_photograph_202511252330 (1).jpeg" />
-        </div>
-      </div>
+<section class="hero">
+  <div class="visual">
+    <div class="badge">Home Service</div>
 
-      <div class="copy">
-        <div class="eyebrow">Professional • Reliable • Local</div>
-        <h2>Complete Car Washing & Detailing — Exterior + Interior</h2>
-        <p class="lead">We bring premium car detailing to your society driveway.</p>
+    <div class="img-left" onclick="openLightbox('images/A_hyperrealistic_photograph_202511252330.jpeg')">
+      <img src="images/A_hyperrealistic_photograph_202511252330.jpeg">
+    </div>
 
-        <div class="cta-row">
-          <a class="btn btn-book" href="https://forms.gle/PbVBYuS88fbgK8oc9">🚗 Book Now</a>
-          <a class="btn btn-wp" href="https://wa.me/917906199445">💬 WhatsApp</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="services">
-      <div class="card">
-        <div style="font-weight:700;font-size:18px">Our Services</div>
-        <ul style="padding-left:18px;margin-top:8px;color:var(--muted)">
-          <li>Exterior Foam Wash</li>
-          <li>Interior Vacuum Cleaning</li>
-          <li>Dashboard & Console Wipe</li>
-          <li>Tyre & Wheel Cleaning</li>
-          <li>Glass & Mirror Cleaning</li>
-          <li>Microfiber Dry & Shine</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div style="font-weight:700;font-size:18px">Why Choose Us?</div>
-        <ul style="padding-left:18px;margin-top:8px;color:var(--muted)">
-          <li>Home Service — Society Driveway</li>
-          <li>Trained & Professional Team</li>
-          <li>Premium Car Care Products</li>
-          <li>Fast & Reliable Work</li>
-          <li>Eco-friendly Cleaning</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div style="font-weight:700;font-size:18px;margin-bottom:10px">Gallery</div>
-        <a href="gallery.html" style="
-          padding:12px 18px;background:var(--accent);color:white;
-          border-radius:10px;text-decoration:none;font-weight:700;">
-          View Gallery →
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <span class="close-btn" onclick="closeLightbox()">×</span>
-    <img id="lightbox-img" src="" />
+    <div class="img-right" onclick="openLightbox('images/A_hyperrealistic_photograph_202511252330 (1).jpeg')">
+      <img src="images/A_hyperrealistic_photograph_202511252330 (1).jpeg">
+    </div>
   </div>
 
-  <script>
-    /* LIGHTBOX */
-    function openLightbox(src){
-      document.getElementById("lightbox-img").src = src;
-      document.getElementById("lightbox").style.display = "flex";
-    }
-    function closeLightbox(){
-      document.getElementById("lightbox").style.display = "none";
-    }
+  <div class="copy">
+    <div class="eyebrow">Professional • Reliable • Local</div>
+    <h2>Complete Car Washing & Detailing — Exterior + Interior</h2>
+    <p class="lead">We bring premium car detailing to your society driveway.</p>
 
-    /* BACKGROUND SLIDESHOW */
-    let slides = document.querySelectorAll(".bg-slide");
-    let current = 0;
+    <div class="cta-row">
+      <a class="btn btn-book" href="https://forms.gle/PbVBYuS88fbgK8oc9">🚗 Book Now</a>
+      <a class="btn btn-wp" href="https://wa.me/917906199445">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
 
-    setInterval(()=>{
-      slides[current].classList.remove("active");
-      current = (current + 1) % slides.length;
-      slides[current].classList.add("active");
-    }, 4000);
-  </script>
+<!-- SERVICES -->
+<section class="services">
+
+  <div class="card">
+    <div style="font-size:18px;font-weight:700;">Our Services</div>
+    <ul style="padding-left:18px;margin-top:10px;color:var(--muted);">
+      <li>Exterior Foam Wash</li>
+      <li>Interior Vacuum Cleaning</li>
+      <li>Dashboard & Console Wipe</li>
+      <li>Tyre & Wheel Cleaning</li>
+      <li>Glass & Mirror Cleaning</li>
+      <li>Microfiber Dry & Shine</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div style="font-size:18px;font-weight:700;">Why Choose Us?</div>
+    <ul style="padding-left:18px;margin-top:10px;color:var(--muted);">
+      <li>Home Service — Society Driveway</li>
+      <li>Trained & Professional Team</li>
+      <li>Premium Car Care Products</li>
+      <li>Fast & Reliable Work</li>
+      <li>Eco-friendly Cleaning</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div style="font-size:18px;font-weight:700;margin-bottom:10px;">Gallery</div>
+    <a href="gallery.html" style="padding:12px 18px;background:var(--accent);color:white;border-radius:10px;text-decoration:none;font-weight:700;">View Gallery →</a>
+  </div>
+
+</section>
+
+</main>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="close-btn" onclick="closeLightbox()">×</span>
+  <img id="lightbox-img" src="">
+</div>
+
+<script>
+function openLightbox(src){
+  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox").style.display = "flex";
+}
+function closeLightbox(){
+  document.getElementById("lightbox").style.display="none";
+}
+
+/* BACKGROUND SLIDESHOW */
+let slides=document.querySelectorAll(".bg-slide");
+let current=0;
+
+setInterval(()=>{
+  slides[current].classList.remove("active");
+  current=(current+1)%slides.length;
+  slides[current].classList.add("active");
+},4000);
+</script>
 
 </body>
 </html>
