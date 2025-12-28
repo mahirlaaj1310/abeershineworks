@@ -287,6 +287,130 @@ footer { margin-top:36px; padding:18px; text-align:center; font-size:13px; color
 
 <body>
 
+
+<!-- HAPPY NEW YEAR BANNER - ADD YAHAN -->
+<div class="new-year-banner" id="newYearBanner">
+  <div class="banner-content">
+    <span class="firework">🎉</span>
+    <span class="text">Happy New Year 2026! 🚀</span>
+    <span class="firework">✨</span>
+  </div>
+</div>
+
+<style>
+/* NEW YEAR BANNER STYLES */
+.new-year-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+  background-size: 400% 400%;
+  animation: gradientShift 3s ease infinite, slideIn 0.8s ease-out;
+  z-index: 100;
+  padding: 12px 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  text-align: center;
+  cursor: pointer;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.text {
+  font-size: 20px;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  letter-spacing: 1px;
+}
+
+.firework {
+  font-size: 24px;
+  animation: bounce 1.5s infinite;
+}
+
+.firework:nth-child(1) { animation-delay: 0s; }
+.firework:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+/* CLOSE BUTTON */
+.new-year-banner::after {
+  content: '✕';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.9);
+  color: #333;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.new-year-banner::after:hover {
+  background: #ff4757;
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .text { font-size: 16px; }
+  .firework { font-size: 20px; }
+}
+</style>
+
+<script>
+// Auto-hide banner after 10 seconds OR close on click
+setTimeout(() => {
+  document.getElementById('newYearBanner').style.display = 'none';
+}, 10000);
+
+// Close on X click
+document.addEventListener('click', (e) => {
+  if (e.target.tagName === 'DIV' && e.target.classList.contains('new-year-banner')) {
+    e.target.style.display = 'none';
+  }
+});
+</script>
+<!-- END NEW YEAR BANNER -->
+
+
+
+
+
+
 <div class="bg-slider" aria-hidden="true"></div>
 <div class="bg-overlay" aria-hidden="true"></div>
 
