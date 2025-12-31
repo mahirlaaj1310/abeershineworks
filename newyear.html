@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    background: url("https://images.unsplash.com/photo-1513151233558-d860c5398176") no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dark overlay */
+.overlay {
+    background: rgba(0,0,0,0.55);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    text-align: center;
+    color: #fff;
+    padding: 30px;
+    max-width: 700px;
+}
+
+/* Animated heading */
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 50px;
+    color: #ffd700;
+    animation: floatText 3s ease-in-out infinite;
+    margin-bottom: 10px;
+}
+
+/* Year */
+.year {
+    font-size: 30px;
+    letter-spacing: 6px;
+    margin-bottom: 30px;
+}
+
+/* Sweet line animation */
+.message {
+    font-size: 18px;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeInUp 2s ease forwards;
+    animation-delay: 1.5s;
+}
+
+@keyframes floatText {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer {
+    margin-top: 40px;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+.highlight {
+    color: #ffd700;
+}
+
+@media(max-width: 600px) {
+    h1 { font-size: 36px; }
+    .year { font-size: 22px; }
+    .message { font-size: 16px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+    <div class="card">
+        <h1>Happy New Year</h1>
+        <div class="year">2026</div>
+
+        <div class="message">
+            Naya saal laaye aapke jeevan me  
+            <span class="highlight">khushiyaan, sukoon aur safalta</span> ✨  
+            <br>
+            Har din muskurahat se bhara ho  
+            aur har sapna sach ho 💫
+        </div>
+
+        <div class="footer">
+            With warm wishes ❤️<br>
+            Abeer / Daivik Doorstep Car Wash<br>
+            📞 7906199445
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
